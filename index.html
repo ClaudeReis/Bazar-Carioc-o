@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bazar Cariocão – Utilidades, ferramentas, ferragens, hidráulica, elétrica e papelaria. Atacado e varejo no Centro do Rio de Janeiro. (21) 99006-3878">
+<meta name="keywords" content="bazar cariocão, ferramentas centro rio, hidráulica centro rio, material elétrico centro rj, atacado varejo centro rio de janeiro">
+<title>Bazar Cariocão | Centro/RJ – Atacado & Varejo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --azul:      #17245A;   /* marinho da logo */
+  --azul-cl:   #B9F0FF;   /* azul claro da logo */
+  --azul-mid:  #24408f;
+  --azul-glow: rgba(185,240,255,0.18);
+  --branco:    #FFFFFF;
+  --off:       #F2F5F7;
+  --txt:       #20242A;
+  --txt-cl:    #5A6678;
+  --azul-med:  #4DAFE8;
+  --borda:     rgba(23,36,90,0.12);
+}
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--txt);background:var(--branco);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none}
+
+/* ─────────────────────────────────────────
+   TIPOGRAFIA
+───────────────────────────────────────── */
+h1,h2,h3{font-family:'Inter',sans-serif;line-height:1.1;letter-spacing:-0.5px}
+h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:500;letter-spacing:-2px}
+h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:500;letter-spacing:-1px}
+h3{font-size:1.15rem;font-weight:600;letter-spacing:-0.2px}
+p{line-height:1.7;color:var(--txt-cl)}
+
+/* ─────────────────────────────────────────
+   LAYOUT HELPERS
+───────────────────────────────────────── */
+.container{width:100%;max-width:1140px;margin:0 auto;padding:0 5vw}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+section{padding:6rem 0}
+
+/* ─────────────────────────────────────────
+   BOTÕES
+───────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;border-radius:10px;padding:15px 30px;cursor:pointer;border:none;transition:transform .2s,box-shadow .2s,opacity .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--azul);color:var(--branco);box-shadow:0 6px 24px rgba(23,36,90,.30)}
+.btn-primary:hover{box-shadow:0 10px 32px rgba(23,36,90,.42)}
+.btn-outline{background:transparent;color:var(--azul);border:2px solid var(--azul)}
+.btn-outline:hover{background:var(--azul);color:var(--branco)}
+.btn-lg{padding:18px 40px;font-size:1.1rem;border-radius:12px}
+.btn-wpp{background:#25D366;color:#fff;box-shadow:0 6px 24px rgba(37,211,102,.35)}
+.btn-wpp:hover{box-shadow:0 10px 32px rgba(37,211,102,.50)}
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--borda);height:68px;display:flex;align-items:center}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1140px;margin:0 auto;padding:0 5vw}
+.nav-logo{display:flex;align-items:center;gap:.75rem}
+.nav-logo-circle{width:40px;height:40px;border-radius:50%;background:var(--azul-cl);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.nav-logo-circle svg{width:26px;height:26px}
+.nav-logo-text{font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;color:var(--azul)}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{color:var(--txt-cl);font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--azul)}
+.nav-cta-btn{background:var(--azul);color:var(--branco) !important;padding:9px 20px;border-radius:8px;font-weight:700 !important;font-size:.85rem !important}
+.nav-cta-btn:hover{opacity:.88;color:var(--branco) !important}
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero{
+  margin-top:68px;
+  min-height:calc(100vh - 68px);
+  background:linear-gradient(135deg, var(--azul) 0%, var(--azul-mid) 60%, #1d2f73 100%);
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  padding:5rem 0;
+}
+/* blobs decorativos */
+.hero::before{
+  content:'';position:absolute;top:-120px;right:-120px;
+  width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle, var(--azul-cl) 0%, transparent 70%);
+  opacity:.18;pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-100px;left:-80px;
+  width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle, var(--azul-cl) 0%, transparent 70%);
+  opacity:.14;pointer-events:none;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(185,240,255,.15);
+  border:1px solid rgba(185,240,255,.30);
+  color:var(--azul-cl);
+  font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:6px 16px;border-radius:999px;margin-bottom:1.5rem;
+}
+.hero h1{color:var(--branco);margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:var(--azul-cl)}
+.hero-sub{color:rgba(255,255,255,.72);font-size:1.1rem;max-width:500px;margin-bottom:2.25rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.hero-trust{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.65);font-size:.82rem;font-weight:500}
+.trust-dot{width:6px;height:6px;border-radius:50%;background:var(--azul-cl)}
+
+/* hero visual card */
+.hero-visual{position:relative;z-index:1}
+.hero-main-card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(20px);
+  border-radius:20px;padding:2rem;
+  box-shadow:0 32px 64px rgba(0,0,0,.25);
+}
+.hero-main-card .card-header{
+  display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;
+  padding-bottom:1.25rem;border-bottom:1px solid rgba(255,255,255,.12);
+}
+.logo-badge{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--azul-cl);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.logo-badge svg{width:36px;height:36px}
+.card-brand h3{color:var(--branco);font-size:1rem;margin-bottom:.2rem}
+.card-brand p{color:rgba(255,255,255,.55);font-size:.8rem;margin:0}
+.hero-cats{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.hero-cat{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;padding:.9rem 1rem;
+  display:flex;align-items:center;gap:.65rem;
+}
+.hero-cat-ico{font-size:1.3rem}
+.hero-cat span{color:rgba(255,255,255,.85);font-size:.82rem;font-weight:600}
+
+.floating-badge{
+  position:absolute;top:-18px;right:-12px;z-index:3;
+  background:var(--azul-cl);color:var(--azul);
+  font-weight:800;font-size:.8rem;
+  padding:10px 16px;border-radius:12px;
+  box-shadow:0 8px 24px rgba(23,36,90,.28);
+  white-space:nowrap;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ─────────────────────────────────────────
+   RIBBON DE CATEGORIAS (scroll)
+───────────────────────────────────────── */
+.ribbon{background:var(--off);border-top:1px solid var(--borda);border-bottom:1px solid var(--borda);padding:1.1rem 0;overflow:hidden}
+.ribbon-track{display:flex;gap:2.5rem;animation:slide 22s linear infinite;width:max-content}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ribbon-item{display:flex;align-items:center;gap:.55rem;white-space:nowrap;color:var(--txt-cl);font-size:.85rem;font-weight:600}
+.ribbon-item svg{color:var(--azul);flex-shrink:0}
+
+/* ─────────────────────────────────────────
+   PROBLEMA
+───────────────────────────────────────── */
+.problema{background:var(--branco)}
+.problema-label{font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--azul-mid);margin-bottom:.75rem}
+.problema h2{margin-bottom:1.25rem;max-width:640px}
+.problema-lead{font-size:1.1rem;max-width:600px;margin-bottom:3rem}
+.dor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
+.dor-card{
+  background:var(--off);
+  border:1.5px solid var(--borda);
+  border-radius:14px;padding:1.5rem;
+  transition:border-color .2s,box-shadow .2s;
+}
+.dor-card:hover{border-color:var(--azul-cl);box-shadow:0 6px 20px rgba(23,36,90,.08)}
+.dor-icon{font-size:1.75rem;margin-bottom:.85rem;display:block}
+.dor-card h3{font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;color:var(--txt);margin-bottom:.4rem}
+.dor-card p{font-size:.85rem;margin:0}
+
+/* ─────────────────────────────────────────
+   TRANSFORMAÇÃO
+───────────────────────────────────────── */
+.transf{background:linear-gradient(135deg, var(--azul) 0%, var(--azul-mid) 100%);color:var(--branco)}
+.transf .section-label{color:var(--azul-cl)}
+.transf h2{color:var(--branco);margin-bottom:1.25rem}
+.transf p{color:rgba(255,255,255,.72)}
+.antes-depois{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;margin-top:3rem}
+.ad-col{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:2rem}
+.ad-col.depois{background:rgba(185,240,255,.12);border-color:rgba(185,240,255,.30)}
+.ad-label{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.25rem;display:block}
+.ad-col:not(.depois) .ad-label{color:rgba(255,255,255,.4)}
+.ad-col.depois .ad-label{color:var(--azul-cl)}
+.ad-item{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.9rem}
+.ad-item:last-child{margin-bottom:0}
+.ad-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:.45rem}
+.ad-col:not(.depois) .ad-dot{background:rgba(255,255,255,.3)}
+.ad-col.depois .ad-dot{background:var(--azul-cl)}
+.ad-item p{font-size:.88rem;line-height:1.55;margin:0}
+.ad-col:not(.depois) .ad-item p{color:rgba(255,255,255,.55)}
+.ad-col.depois .ad-item p{color:rgba(255,255,255,.88)}
+.ad-arrow{font-size:2rem;color:var(--azul-cl);text-align:center}
+
+/* ─────────────────────────────────────────
+   BENEFÍCIOS
+───────────────────────────────────────── */
+.beneficios{background:var(--off)}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--azul-mid);margin-bottom:.75rem}
+.ben-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.25rem;margin-top:2.75rem}
+.ben-card{
+  background:var(--branco);
+  border:1.5px solid var(--borda);
+  border-radius:16px;padding:1.75rem;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.ben-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(23,36,90,.10);border-color:var(--azul-cl)}
+.ben-ico{
+  width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg,var(--azul-cl),rgba(185,240,255,.4));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.35rem;margin-bottom:1.1rem;
+}
+.ben-card h3{font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;color:var(--txt);margin-bottom:.45rem}
+.ben-card p{font-size:.84rem;margin:0;line-height:1.6}
+
+/* ─────────────────────────────────────────
+   COMO FUNCIONA
+───────────────────────────────────────── */
+.como{background:var(--branco)}
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0;margin-top:3rem;position:relative}
+.steps::before{
+  content:'';position:absolute;top:30px;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,var(--azul-cl),var(--azul),var(--azul-cl));
+  opacity:.25;z-index:0;
+}
+.step{text-align:center;padding:0 1rem;position:relative;z-index:1}
+.step-num{
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,var(--azul) 0%,var(--azul-mid) 100%);
+  color:var(--branco);
+  font-family:'Inter',sans-serif;font-weight:900;font-size:1.3rem;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.25rem;
+  box-shadow:0 6px 20px rgba(23,36,90,.25);
+}
+.step h3{font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;color:var(--txt);margin-bottom:.45rem}
+.step p{font-size:.83rem;max-width:200px;margin:0 auto}
+
+/* ─────────────────────────────────────────
+   DEPOIMENTOS
+───────────────────────────────────────── */
+.depoimentos{background:var(--off)}
+.dep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:2.75rem}
+.dep-card{
+  background:var(--branco);
+  border:1.5px solid var(--borda);
+  border-radius:16px;padding:1.75rem;
+}
+.stars{color:#F5A623;font-size:1rem;margin-bottom:1rem;letter-spacing:2px}
+.dep-text{font-size:.9rem;color:var(--txt);line-height:1.7;margin-bottom:1.25rem;font-style:italic}
+.dep-author{display:flex;align-items:center;gap:.75rem}
+.dep-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--azul-cl),var(--azul));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--branco);font-weight:700;font-size:.9rem;
+  flex-shrink:0;
+}
+.dep-name{font-size:.85rem;font-weight:700;color:var(--txt);margin-bottom:.1rem}
+.dep-role{font-size:.78rem;color:var(--txt-cl)}
+
+/* ─────────────────────────────────────────
+   OFERTA
+───────────────────────────────────────── */
+.oferta{background:var(--branco)}
+.oferta-box{
+  background:linear-gradient(135deg,var(--azul) 0%,var(--azul-mid) 100%);
+  border-radius:24px;padding:3.5rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+  box-shadow:0 32px 64px rgba(23,36,90,.20);
+  position:relative;overflow:hidden;
+}
+.oferta-box::after{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,var(--azul-cl) 0%,transparent 70%);
+  opacity:.2;pointer-events:none;
+}
+.oferta-label{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--azul-cl);margin-bottom:.75rem;display:block}
+.oferta h2{color:var(--branco);margin-bottom:1rem}
+.oferta p{color:rgba(255,255,255,.72);margin-bottom:2rem}
+.oferta-items{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.oferta-items li{
+  display:flex;align-items:center;gap:.75rem;
+  color:rgba(255,255,255,.9);font-size:.9rem;font-weight:500;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+  border-radius:10px;padding:.75rem 1rem;
+}
+.oferta-check{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--azul-cl);color:var(--azul);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:900;flex-shrink:0;
+}
+
+/* ─────────────────────────────────────────
+   FAQ
+───────────────────────────────────────── */
+.faq{background:var(--off)}
+.faq-list{margin-top:2.75rem;display:flex;flex-direction:column;gap:.75rem;max-width:720px;margin-left:auto;margin-right:auto}
+.faq-item{
+  background:var(--branco);
+  border:1.5px solid var(--borda);
+  border-radius:14px;overflow:hidden;
+}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1.25rem 1.5rem;cursor:pointer;
+  font-weight:700;font-size:.95rem;color:var(--txt);
+  list-style:none;
+  transition:background .2s;
+}
+.faq-q:hover{background:var(--off)}
+.faq-q::after{
+  content:'+';font-size:1.4rem;color:var(--azul);font-weight:300;flex-shrink:0;
+  transition:transform .25s;
+}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .35s ease,padding .35s ease;
+  font-size:.88rem;color:var(--txt-cl);line-height:1.7;
+  padding:0 1.5rem;
+}
+.faq-item.open .faq-a{max-height:200px;padding:.25rem 1.5rem 1.25rem}
+
+/* ─────────────────────────────────────────
+   CTA FINAL
+───────────────────────────────────────── */
+.cta-final{
+  background:var(--azul);
+  text-align:center;padding:6rem 0;
+  position:relative;overflow:hidden;
+}
+.cta-final::before{
+  content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);
+  width:600px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,var(--azul-cl) 0%,transparent 70%);
+  opacity:.15;pointer-events:none;
+}
+.cta-final .section-label{color:var(--azul-cl)}
+.cta-final h2{color:var(--branco);margin-bottom:1rem;max-width:640px;margin-left:auto;margin-right:auto}
+.cta-final p{color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 2.5rem;font-size:1rem}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-final .btn-outline{color:var(--branco);border-color:rgba(255,255,255,.35)}
+.cta-final .btn-outline:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6)}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer{
+  background:#0D1533;
+  padding:2.5rem 0;
+  display:flex;align-items:center;
+}
+.footer-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;max-width:1140px;margin:0 auto;padding:0 5vw;
+  flex-wrap:wrap;gap:1.25rem;
+}
+.footer-logo{display:flex;align-items:center;gap:.6rem}
+.footer-logo-circle{width:34px;height:34px;border-radius:50%;background:var(--azul-cl);display:flex;align-items:center;justify-content:center}
+.footer-logo-circle svg{width:22px;height:22px}
+.footer-brand{font-family:'Inter',sans-serif;font-weight:700;color:var(--azul-cl);font-size:.95rem}
+.footer-copy{font-size:.78rem;color:rgba(255,255,255,.35)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.8rem;color:rgba(255,255,255,.4);transition:color .2s}
+.footer-links a:hover{color:var(--azul-cl)}
+
+/* ─────────────────────────────────────────
+   WHATSAPP FLOAT
+───────────────────────────────────────── */
+.wpp-float{
+  position:fixed;bottom:24px;right:24px;z-index:9999;
+  width:58px;height:58px;background:#25D366;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 24px rgba(37,211,102,.45);
+  transition:transform .2s,box-shadow .2s;
+  color:#fff;
+}
+.wpp-float:hover{transform:scale(1.1);box-shadow:0 10px 32px rgba(37,211,102,.6)}
+.wpp-float svg{width:28px;height:28px;fill:#fff}
+
+/* ─────────────────────────────────────────
+   BARRA GOOGLE
+───────────────────────────────────────── */
+.google-bar{background:#0D1533;padding:1rem 0;border-bottom:1px solid rgba(185,240,255,.15)}
+.google-bar-inner{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+.gbar-rating{display:flex;align-items:center;gap:.6rem}
+.gbar-stars{color:#F5A623;font-size:1rem;letter-spacing:2px}
+.gbar-info{font-size:.85rem;color:rgba(255,255,255,.8)}
+.gbar-info strong{color:#fff;font-weight:700}
+.gbar-info span{color:rgba(255,255,255,.5)}
+.gbar-div{width:1px;height:20px;background:rgba(255,255,255,.15)}
+.gbar-item{font-size:.82rem;color:rgba(255,255,255,.65)}
+
+/* ─────────────────────────────────────────
+   FOTOS DA LOJA
+───────────────────────────────────────── */
+.fotos-loja{background:var(--off)}
+.fotos-sub{max-width:540px;margin-bottom:2.5rem}
+.fotos-grid{
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr;
+  grid-template-rows:200px 200px;
+  gap:1rem;
+}
+.foto-grande{grid-row:span 2}
+.foto-card{
+  border-radius:16px;overflow:hidden;position:relative;
+  background:linear-gradient(135deg,var(--azul) 0%,var(--azul-mid) 100%);
+  min-height:160px;
+}
+.foto-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.foto-card:hover img{transform:scale(1.04)}
+.foto-overlay{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.6));
+  padding:.75rem 1rem;
+}
+.foto-overlay span{color:#fff;font-size:.8rem;font-weight:600}
+.foto-stat{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--azul) 0%,var(--azul-mid) 100%)}
+.foto-stat-alt{background:linear-gradient(135deg,var(--azul-mid) 0%,#1d2f73 100%)}
+.stat-card-inner{text-align:center;padding:1.5rem}
+.stat-card-num{font-family:'Inter',sans-serif;font-weight:900;font-size:2rem;color:var(--azul-cl);margin-bottom:.35rem}
+.stat-card-label{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+.stat-card-sub{font-size:.75rem;color:rgba(255,255,255,.55)}
+
+@media(max-width:768px){
+  .fotos-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .foto-grande{grid-row:span 1;min-height:180px}
+  .google-bar-inner{gap:1rem}
+  .gbar-div{display:none}
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media(max-width:900px){
+  .grid-2{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .antes-depois{grid-template-columns:1fr;gap:1rem}
+  .ad-arrow{transform:rotate(90deg)}
+  .oferta-box{grid-template-columns:1fr;padding:2rem}
+  .steps::before{display:none}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  h1{font-size:2.1rem}
+  h2{font-size:1.6rem}
+  section{padding:4rem 0}
+  .oferta-box{padding:1.5rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav aria-label="Navegação principal">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-circle">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="10" cy="22" rx="9" ry="8" fill="#17245A"/>
+          <ellipse cx="26" cy="22" rx="9" ry="8" fill="#17245A"/>
+          <line x1="5" y1="14" x2="31" y2="14" stroke="#17245A" stroke-width="1.5"/>
+          <rect x="16" y="8" width="4" height="7" rx="1.5" fill="#17245A"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">Bazar Cariocão</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#problema">O problema</a></li>
+      <li><a href="#beneficios">Benefícios</a></li>
+      <li><a href="#como">Como funciona</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="catalogo.html">Catálogo</a></li>
+      <li><a href="https://wa.me/5521990063878" class="nav-cta-btn" target="_blank" rel="noopener">WhatsApp</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" aria-label="Introdução">
+  <div class="container">
+    <div class="grid-2">
+
+      <div class="hero-content">
+        <div class="hero-tag">📍 Centro do Rio de Janeiro</div>
+        <h1>Tudo que você<br>precisa para<br><em>construir, reparar<br>e criar.</em></h1>
+        <p class="hero-sub">Ferramentas, ferragens, hidráulica, elétrica, papelaria e muito mais. Atacado e varejo com o melhor preço do Centro.</p>
+        <div class="hero-btns">
+          <a href="https://wa.me/5521990063878" class="btn btn-wpp btn-lg" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.553 4.1 1.521 5.827L.057 23.857c-.067.247.153.466.399.398l6.098-1.598A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.012-1.372l-.36-.213-3.724.976.994-3.638-.233-.374A9.818 9.818 0 1112 21.818z"/></svg>
+            Falar no WhatsApp
+          </a>
+          <a href="#como" class="btn btn-outline btn-lg">Ver como funciona</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><span class="trust-dot"></span> Atacado & Varejo</div>
+          <div class="trust-item"><span class="trust-dot"></span> +5.000 produtos</div>
+          <div class="trust-item"><span class="trust-dot"></span> Centro/RJ</div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div style="position:relative">
+          <div class="floating-badge">🏆 Melhor preço do Centro</div>
+          <div class="hero-main-card">
+            <div class="card-header">
+              <div class="logo-badge" aria-hidden="true">
+                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="10" cy="22" rx="9" ry="8" fill="#17245A"/>
+                  <ellipse cx="26" cy="22" rx="9" ry="8" fill="#17245A"/>
+                  <line x1="5" y1="14" x2="31" y2="14" stroke="#17245A" stroke-width="1.5"/>
+                  <rect x="16" y="8" width="4" height="7" rx="1.5" fill="#17245A"/>
+                </svg>
+              </div>
+              <div class="card-brand">
+                <h3>Bazar Cariocão</h3>
+                <p>R. Luís de Camões, 8 – Centro/RJ</p>
+              </div>
+            </div>
+            <div class="hero-cats">
+              <div class="hero-cat"><span class="hero-cat-ico">🔧</span><span>Ferramentas</span></div>
+              <div class="hero-cat"><span class="hero-cat-ico">🔩</span><span>Ferragens</span></div>
+              <div class="hero-cat"><span class="hero-cat-ico">🚿</span><span>Hidráulica</span></div>
+              <div class="hero-cat"><span class="hero-cat-ico">⚡</span><span>Elétrica</span></div>
+              <div class="hero-cat"><span class="hero-cat-ico">📎</span><span>Papelaria</span></div>
+              <div class="hero-cat"><span class="hero-cat-ico">🏠</span><span>Utilidades</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── BARRA GOOGLE ─── -->
+<div class="google-bar">
+  <div class="container">
+    <div class="google-bar-inner">
+      <div class="gbar-rating">
+        <div class="gbar-stars">★★★★★</div>
+        <div class="gbar-info"><strong>4,8</strong> no Google <span>· 17 avaliações</span></div>
+      </div>
+      <div class="gbar-div"></div>
+      <div class="gbar-item">📍 R. Luís de Camões, 8 – Centro/RJ</div>
+      <div class="gbar-div"></div>
+      <div class="gbar-item">📞 (21) 99006-3878</div>
+      <div class="gbar-div"></div>
+      <div class="gbar-item">✉️ vendasbazarcariocao@gmail.com</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOTOS DA LOJA ─── -->
+<section class="fotos-loja">
+  <div class="container">
+    <div class="section-label">A loja por dentro</div>
+    <h2>Estoque real, variedade real.</h2>
+    <p class="fotos-sub">Prateleiras abastecidas, produtos organizados e tudo que você precisa num espaço só. Veja como é o Bazar Cariocão.</p>
+    <div class="fotos-grid">
+      <!-- Foto 1 - grande, loja por dentro -->
+      <div class="foto-card foto-grande">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#17245A,#24408f);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;text-align:center">
+          <div style="font-size:4rem">🏪</div>
+          <div style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.2rem;color:#B9F0FF">A Loja</div>
+          <div style="font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.5">R. Luís de Camões, 8<br>Centro – Rio de Janeiro</div>
+          <a href="https://maps.google.com/?q=Rua+Luís+de+Camões,+8,+Centro,+Rio+de+Janeiro" target="_blank" rel="noopener"
+             style="background:#B9F0FF;color:#17245A;font-weight:700;font-size:.82rem;padding:8px 18px;border-radius:8px;text-decoration:none;margin-top:.5rem">
+            📍 Ver no Maps
+          </a>
+        </div>
+        <div class="foto-overlay"><span>📸 @bazarcariocao</span></div>
+      </div>
+      <!-- Card prateleiras -->
+      <div class="foto-card">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#1d2f73,#17245A);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;padding:1.5rem;text-align:center">
+          <div style="font-size:2.5rem">🔧⚡🚿</div>
+          <div style="font-size:.82rem;font-weight:700;color:#fff">Ferramentas · Elétrica · Hidráulica</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.55)">Tudo em estoque</div>
+        </div>
+      </div>
+      <!-- Card avaliação -->
+      <div class="foto-card foto-stat">
+        <div class="stat-card-inner">
+          <div class="stat-card-num">4,8 ⭐</div>
+          <div class="stat-card-label">no Google Maps</div>
+          <div class="stat-card-sub">17 avaliações verificadas</div>
+        </div>
+      </div>
+      <!-- Card produtos -->
+      <div class="foto-card">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#24408f,#17245A);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;padding:1.5rem;text-align:center">
+          <div style="font-size:2.5rem">🔩📎🏠</div>
+          <div style="font-size:.82rem;font-weight:700;color:#fff">Ferragens · Papelaria · Utilidades</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.55)">Atacado e varejo</div>
+        </div>
+      </div>
+      <!-- Card quantidade -->
+      <div class="foto-card foto-stat foto-stat-alt">
+        <div class="stat-card-inner">
+          <div class="stat-card-num">+5mil</div>
+          <div class="stat-card-label">itens em estoque</div>
+          <div class="stat-card-sub">Pronto para você</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RIBBON ─── -->
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track">
+    <span class="ribbon-item">🔧 Ferramentas</span>
+    <span class="ribbon-item">🔩 Ferragens</span>
+    <span class="ribbon-item">🚿 Hidráulica</span>
+    <span class="ribbon-item">⚡ Elétrica</span>
+    <span class="ribbon-item">📎 Papelaria</span>
+    <span class="ribbon-item">🏠 Utilidades</span>
+    <span class="ribbon-item">🎨 Pintura</span>
+    <span class="ribbon-item">🔒 Fechaduras</span>
+    <span class="ribbon-item">🪛 Parafusos</span>
+    <!-- duplicado para loop infinito -->
+    <span class="ribbon-item">🔧 Ferramentas</span>
+    <span class="ribbon-item">🔩 Ferragens</span>
+    <span class="ribbon-item">🚿 Hidráulica</span>
+    <span class="ribbon-item">⚡ Elétrica</span>
+    <span class="ribbon-item">📎 Papelaria</span>
+    <span class="ribbon-item">🏠 Utilidades</span>
+    <span class="ribbon-item">🎨 Pintura</span>
+    <span class="ribbon-item">🔒 Fechaduras</span>
+    <span class="ribbon-item">🪛 Parafusos</span>
+  </div>
+</div>
+
+<!-- ─── PROBLEMA ─── -->
+<section id="problema" class="problema">
+  <div class="container">
+    <div class="problema-label">O problema que a gente resolve</div>
+    <h2>Perder tempo procurando produto em várias lojas custa caro.</h2>
+    <p class="problema-lead">Quem trabalha com manutenção, obra ou conserto sabe bem: encontrar tudo que precisa em um único lugar é raro. Você perde horas indo de loja em loja — e ainda paga mais.</p>
+    <div class="dor-grid">
+      <div class="dor-card">
+        <span class="dor-icon">😤</span>
+        <h3>Loja sem estoque</h3>
+        <p>Chegar até a loja e descobrir que o produto está em falta. Isso para o seu serviço.</p>
+      </div>
+      <div class="dor-card">
+        <span class="dor-icon">🗺️</span>
+        <h3>Muitas lojas, muito deslocamento</h3>
+        <p>Parafuso numa loja, tubo em outra, tomada em outra. O Rio é grande — o tempo é curto.</p>
+      </div>
+      <div class="dor-card">
+        <span class="dor-icon">💸</span>
+        <h3>Preço de varejo sempre alto</h3>
+        <p>Sem opção de atacado, você paga mais por produto e ainda não tem desconto por volume.</p>
+      </div>
+      <div class="dor-card">
+        <span class="dor-icon">🤷</span>
+        <h3>Atendimento sem conhecimento</h3>
+        <p>Vendedor que não sabe indicar o produto certo faz você errar a compra e gastar em dobro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRANSFORMAÇÃO ─── -->
+<section class="transf">
+  <div class="container">
+    <div class="section-label">A transformação</div>
+    <h2>Com o Bazar Cariocão,<br>você resolve tudo numa ida só.</h2>
+    <p>Estoque amplo, preço de atacado e atendimento especializado. Isso é o que muda quando você encontra o parceiro certo.</p>
+    <div class="antes-depois">
+      <div class="ad-col">
+        <span class="ad-label">Antes</span>
+        <div class="ad-item"><div class="ad-dot"></div><p>Vai até a loja errada e perde meia manhã</p></div>
+        <div class="ad-item"><div class="ad-dot"></div><p>Paga preço de varejo em tudo</p></div>
+        <div class="ad-item"><div class="ad-dot"></div><p>Não encontra tudo e precisa voltar</p></div>
+        <div class="ad-item"><div class="ad-dot"></div><p>Compra o produto errado por falta de orientação</p></div>
+      </div>
+      <div class="ad-arrow">→</div>
+      <div class="ad-col depois">
+        <span class="ad-label">Depois do Bazar Cariocão</span>
+        <div class="ad-item"><div class="ad-dot"></div><p>Tudo em um lugar só, no coração do Centro/RJ</p></div>
+        <div class="ad-item"><div class="ad-dot"></div><p>Preço de atacado para qualquer quantidade</p></div>
+        <div class="ad-item"><div class="ad-dot"></div><p>+5.000 itens em estoque — você sai com o que precisava</p></div>
+        <div class="ad-item"><div class="ad-dot"></div><p>Atendimento que indica o produto certo para o seu serviço</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BENEFÍCIOS ─── -->
+<section id="beneficios" class="beneficios">
+  <div class="container">
+    <div class="section-label">Por que escolher o Cariocão</div>
+    <h2>Seis razões para nunca mais<br>procurar em outro lugar.</h2>
+    <div class="ben-grid">
+      <div class="ben-card">
+        <div class="ben-ico">🏪</div>
+        <h3>Tudo em um lugar</h3>
+        <p>Ferramenta, hidráulica, elétrica, papelaria — na mesma loja, na mesma ida.</p>
+      </div>
+      <div class="ben-card">
+        <div class="ben-ico">💰</div>
+        <h3>Preço de atacado</h3>
+        <p>Quanto mais você compra, mais barato fica. Ideal para profissionais e pequenas empresas.</p>
+      </div>
+      <div class="ben-card">
+        <div class="ben-ico">📦</div>
+        <h3>Estoque garantido</h3>
+        <p>Mais de 5.000 produtos disponíveis. Você raramente vai embora de mãos vazias.</p>
+      </div>
+      <div class="ben-card">
+        <div class="ben-ico">📍</div>
+        <h3>Localização estratégica</h3>
+        <p>Centro do Rio, acessível por metrô, ônibus e carro. Fácil de chegar de qualquer bairro.</p>
+      </div>
+      <div class="ben-card">
+        <div class="ben-ico">🤝</div>
+        <h3>Atendimento especializado</h3>
+        <p>A equipe conhece os produtos e ajuda você a escolher a solução certa — sem erro de compra.</p>
+      </div>
+      <div class="ben-card">
+        <div class="ben-ico">💬</div>
+        <h3>Atendimento pelo WhatsApp</h3>
+        <p>Verifique disponibilidade, tire dúvidas e faça pedidos sem sair de casa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMO FUNCIONA ─── -->
+<section id="como" class="como">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Como funciona</div>
+    <h2 style="text-align:center">Da dúvida à compra em 3 passos simples.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Fale pelo WhatsApp</h3>
+        <p>Mande uma mensagem com o que você precisa. A gente responde rápido e confirma o estoque.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Venha até a loja</h3>
+        <p>Rua Luís de Camões, 8 – Centro/RJ. Fácil de achar, fácil de chegar.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Leve tudo de uma vez</h3>
+        <p>Encontre tudo que precisa num só lugar e volte pronto para trabalhar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DEPOIMENTOS ─── -->
+<section class="depoimentos">
+  <div class="container">
+    <div class="section-label">O que dizem os clientes</div>
+    <h2>Quem comprou, voltou.</h2>
+    <div class="dep-grid">
+      <div class="dep-card">
+        <div class="stars">★★★★★</div>
+        <p class="dep-text">"Fui lá para comprar material elétrico e saí com tudo que precisava para a obra inteira. Preço justo, atendimento excelente e o estoque impressiona."</p>
+        <div class="dep-author">
+          <div class="dep-avatar">MR</div>
+          <div>
+            <div class="dep-name">Marcos R.</div>
+            <div class="dep-role">Eletricista autônomo</div>
+          </div>
+        </div>
+      </div>
+      <div class="dep-card">
+        <div class="stars">★★★★★</div>
+        <p class="dep-text">"Compro no atacado mensalmente para minha construtora. O preço é imbatível e nunca falta produto. Virou minha loja principal no Centro."</p>
+        <div class="dep-author">
+          <div class="dep-avatar">CP</div>
+          <div>
+            <div class="dep-name">Carla P.</div>
+            <div class="dep-role">Gestora de obras</div>
+          </div>
+        </div>
+      </div>
+      <div class="dep-card">
+        <div class="stars">★★★★★</div>
+        <p class="dep-text">"Mandei mensagem no WhatsApp antes de ir, eles confirmaram o estoque e separaram. Chegando lá foi só pagar e levar. Isso é atendimento de verdade."</p>
+        <div class="dep-author">
+          <div class="dep-avatar">LS</div>
+          <div>
+            <div class="dep-name">Lucas S.</div>
+            <div class="dep-role">Encanador</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OFERTA ─── -->
+<section class="oferta">
+  <div class="container">
+    <div class="oferta-box">
+      <div>
+        <span class="oferta-label">O que você encontra aqui</span>
+        <h2>Uma loja completa<br>para o profissional<br>do Rio de Janeiro.</h2>
+        <p>Não importa o tamanho do seu serviço — temos o que você precisa, na quantidade certa, pelo preço que faz sentido.</p>
+        <a href="https://wa.me/5521990063878" class="btn btn-wpp" target="_blank" rel="noopener">
+          💬 Verificar disponibilidade agora
+        </a>
+      </div>
+      <div>
+        <ul class="oferta-items">
+          <li><div class="oferta-check">✓</div> Ferramentas manuais e elétricas</li>
+          <li><div class="oferta-check">✓</div> Ferragens completas</li>
+          <li><div class="oferta-check">✓</div> Material hidráulico</li>
+          <li><div class="oferta-check">✓</div> Material elétrico</li>
+          <li><div class="oferta-check">✓</div> Papelaria e escritório</li>
+          <li><div class="oferta-check">✓</div> Utilidades domésticas</li>
+          <li><div class="oferta-check">✓</div> Atacado e varejo disponíveis</li>
+          <li><div class="oferta-check">✓</div> Atendimento pelo WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq" class="faq">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Dúvidas frequentes</div>
+    <h2 style="text-align:center">Antes de ir, tire suas dúvidas.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">O Bazar Cariocão vende no atacado?</div>
+        <div class="faq-a" aria-hidden="true">Sim! Trabalhamos tanto no varejo quanto no atacado. Quanto maior a quantidade, melhor o preço. Fale pelo WhatsApp para saber as condições especiais para compras em volume.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">Como sei se o produto que preciso está em estoque?</div>
+        <div class="faq-a" aria-hidden="true">A forma mais rápida é mandar uma mensagem no nosso WhatsApp antes de vir. A gente confirma a disponibilidade na hora e, se quiser, já separa para você.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">Qual o endereço exato e como chegar?</div>
+        <div class="faq-a" aria-hidden="true">Estamos na Rua Luís de Camões, 8 – Centro, Rio de Janeiro. Acessível por várias linhas de ônibus e a minutos de estações de metrô do Centro.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">Qual o horário de funcionamento?</div>
+        <div class="faq-a" aria-hidden="true">Segunda a sexta das 8h às 18h, sábado das 8h às 14h. Domingos fechado. Consulte o Instagram @bazarcariocao para avisos de feriados.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">Quais formas de pagamento são aceitas?</div>
+        <div class="faq-a" aria-hidden="true">Aceitamos dinheiro, cartão de débito e crédito, e Pix. Dúvidas? Fale pelo WhatsApp (21) 99006-3878 ou mande e-mail para vendasbazarcariocao@gmail.com.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0" aria-expanded="false">Posso ligar para confirmar disponibilidade?</div>
+        <div class="faq-a" aria-hidden="true">Sim! Ligue para (21) 99006-3878 ou mande mensagem no WhatsApp. É a forma mais rápida de confirmar estoque e fazer reservas antes de vir até a loja.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA FINAL ─── -->
+<section class="cta-final">
+  <div class="container">
+    <div class="section-label">Pronto para começar?</div>
+    <h2>Venha ao Bazar Cariocão.<br>Você já devia ter vindo antes.</h2>
+    <p>Fale com a gente pelo WhatsApp ou visite a loja. Estoque pronto, atendimento pronto, preço pronto.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/5521990063878" class="btn btn-wpp btn-lg" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.553 4.1 1.521 5.827L.057 23.857c-.067.247.153.466.399.398l6.098-1.598A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.012-1.372l-.36-.213-3.724.976.994-3.638-.233-.374A9.818 9.818 0 1112 21.818z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a href="tel:+552199006-3878" class="btn btn-outline">📞 (21) 99006-3878</a>
+      <a href="https://www.instagram.com/bazarcariocao" class="btn btn-outline" target="_blank" rel="noopener">📸 Instagram</a>
+    </div>
+    <div style="margin-top:2rem;font-size:.82rem;color:rgba(255,255,255,.45)">
+      ✉️ vendasbazarcariocao@gmail.com &nbsp;·&nbsp; Seg–Sex 8h–18h · Sáb 8h–14h
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="footer-logo-circle" aria-hidden="true">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="10" cy="22" rx="9" ry="8" fill="#17245A"/>
+          <ellipse cx="26" cy="22" rx="9" ry="8" fill="#17245A"/>
+          <line x1="5" y1="14" x2="31" y2="14" stroke="#17245A" stroke-width="1.5"/>
+          <rect x="16" y="8" width="4" height="7" rx="1.5" fill="#17245A"/>
+        </svg>
+      </div>
+      <span class="footer-brand">Bazar Cariocão</span>
+    </div>
+    <span class="footer-copy">© 2025 Bazar Cariocão · R. Luís de Camões, 8 – Centro/RJ</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/bazarcariocao" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/5521990063878" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── WPP FLOAT ─── -->
+<a href="https://wa.me/5521990063878" class="wpp-float" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.553 4.1 1.521 5.827L.057 23.857c-.067.247.153.466.399.398l6.098-1.598A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.012-1.372l-.36-.213-3.724.976.994-3.638-.233-.374A9.818 9.818 0 1112 21.818z"/>
+  </svg>
+</a>
+
+<!-- ─── JS ─── -->
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  const activate = () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      i.querySelector('.faq-a').setAttribute('aria-hidden','true');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      q.setAttribute('aria-expanded','true');
+      item.querySelector('.faq-a').setAttribute('aria-hidden','false');
+    }
+  };
+  q.addEventListener('click', activate);
+  q.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); activate(); } });
+});
+
+// Smooth scroll offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+    }
+  });
+});
+
+// Scroll-reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      en.target.style.opacity = '1';
+      en.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.ben-card,.dor-card,.dep-card,.step,.oferta-box').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity .5s ease, transform .5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
