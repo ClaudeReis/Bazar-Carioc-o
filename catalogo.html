@@ -7,423 +7,367 @@
 <title>Catálogo | Bazar Cariocão – Atacado & Varejo · Centro/RJ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ─────────────────────────────────────────
-   TOKENS — guia de marca Bazar Cariocão
-───────────────────────────────────────── */
 :root{
-  /* base */
-  --azul-cl:   #B9F0FF;   /* azul claro da marca */
-  --marinho:   #17245A;   /* títulos, textos fortes, ícones, botões */
-  --branco:    #FFFFFF;
-  --azul-med:  #4DAFE8;   /* detalhes, linhas, cards, ícones */
-  --cinza-cl:  #F2F5F7;   /* fundo neutro do catálogo */
-  --cinza-es:  #20242A;   /* textos de apoio */
-  /* comerciais — só em chamadas comerciais */
-  --promo:     #E63946;
-  --preco:     #FFD43B;
-  --wpp:       #25D366;
-  --laranja:   #FF8A00;
-  /* derivados */
-  --tile:      #EAF8FD;
-  --borda:     rgba(23,36,90,.10);
-  --borda-ft:  rgba(23,36,90,.18);
-  --txt-sub:   #5A6678;
-  --sombra:    0 1px 2px rgba(23,36,90,.04), 0 6px 20px rgba(23,36,90,.06);
-  --sombra-hv: 0 8px 16px rgba(23,36,90,.08), 0 18px 40px rgba(23,36,90,.12);
-  --nav-h:     68px;
+  --azul-cl:#B9F0FF; --marinho:#17245A; --branco:#FFFFFF; --azul-med:#4DAFE8;
+  --cinza-cl:#F2F5F7; --cinza-es:#20242A;
+  --promo:#E63946; --preco:#FFD43B; --wpp:#25D366; --laranja:#FF8A00;
+  --tile:#EAF8FD; --borda:#E2E8F0; --borda-2:#CBD5E1; --txt-sub:#5A6678;
+  --sombra:0 1px 2px rgba(23,36,90,.05),0 4px 14px rgba(23,36,90,.06);
+  --sombra-hv:0 10px 24px rgba(23,36,90,.12);
 }
-
-/* ─────────────────────────────────────────
-   RESET & BASE
-───────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Inter',system-ui,sans-serif;
-  color:var(--marinho);
-  background:var(--cinza-cl);
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--marinho);background:var(--cinza-cl);-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
-button{font-family:inherit}
+button{font-family:inherit;cursor:pointer}
+input,select{font-family:inherit}
+.wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 16px}
 
-/* ── ESCALA TIPOGRÁFICA (guia de marca) ── */
-.display-sm{font-size:clamp(2rem,4.5vw,2.6rem);font-weight:500;line-height:1.1;letter-spacing:-1px}
-.title-lg{font-size:1.5rem;font-weight:600;line-height:1.3;letter-spacing:-.3px}
-.title-md{font-size:1.125rem;font-weight:600;line-height:1.4}
-.title-sm{font-size:1rem;font-weight:600;line-height:1.4}
-.body-md{font-size:1rem;font-weight:400;line-height:1.55}
-.body-sm{font-size:.875rem;font-weight:400;line-height:1.55}
-.caption{font-size:.8125rem;font-weight:500;line-height:1.4}
-.caption-up{font-size:.75rem;font-weight:600;line-height:1.5;letter-spacing:1.5px;text-transform:uppercase}
+/* ───── TOP BAR ───── */
+.topbar{background:#fff;border-bottom:1px solid var(--borda);font-size:12.5px;color:var(--txt-sub)}
+.topbar .wrap{display:flex;align-items:center;gap:20px;height:36px;flex-wrap:wrap;overflow:hidden}
+.topbar .ti{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.topbar .ti svg{width:14px;height:14px;color:var(--azul-med)}
+.topbar .ti strong{color:var(--marinho);font-weight:600}
+.topbar .spacer{flex:1}
 
-/* ─────────────────────────────────────────
-   LAYOUT
-───────────────────────────────────────── */
-.container{width:100%;max-width:1200px;margin:0 auto;padding:0 5vw}
+/* ───── HEADER ───── */
+.head{background:var(--marinho);position:sticky;top:0;z-index:60}
+.head .wrap{display:flex;align-items:center;gap:20px;height:74px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-circle{width:42px;height:42px;border-radius:50%;background:var(--azul-cl);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.brand-circle svg{width:26px;height:26px}
+.brand-txt b{display:block;color:#fff;font-size:16px;font-weight:700;line-height:1.1;letter-spacing:-.3px}
+.brand-txt span{display:block;color:var(--azul-cl);font-size:11px;font-weight:600;letter-spacing:.5px}
 
-/* ─────────────────────────────────────────
-   NAV
-───────────────────────────────────────── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(255,255,255,.9);backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--borda);height:var(--nav-h);display:flex;align-items:center;
-}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1200px;margin:0 auto;padding:0 5vw}
-.nav-logo{display:flex;align-items:center;gap:.7rem}
-.nav-logo-circle{width:40px;height:40px;border-radius:50%;background:var(--azul-cl);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.nav-logo-circle svg{width:25px;height:25px}
-.nav-logo-text{font-weight:700;font-size:1.05rem;color:var(--marinho);letter-spacing:-.3px}
-.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
-.nav-links a{font-size:.875rem;font-weight:500;color:var(--txt-sub);transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--marinho)}
-.nav-cta{
-  display:inline-flex;align-items:center;gap:.45rem;
-  background:var(--wpp);color:#fff !important;font-size:.85rem;font-weight:600;
-  padding:9px 18px;border-radius:9px;box-shadow:0 4px 14px rgba(37,211,102,.3);transition:transform .2s,box-shadow .2s;
-}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(37,211,102,.42)}
-.nav-cta svg{width:16px;height:16px}
+.search{flex:1;display:flex;max-width:640px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.search input{flex:1;border:none;outline:none;height:46px;padding:0 16px;font-size:15px;color:var(--marinho)}
+.search input::placeholder{color:#9aa6b6}
+.search .clr{border:none;background:transparent;color:#9aa6b6;padding:0 6px;display:none;align-items:center}
+.search .clr.show{display:flex}
+.search .clr svg{width:16px;height:16px}
+.search button.go{border:none;background:var(--azul-med);color:#fff;width:54px;display:flex;align-items:center;justify-content:center;transition:filter .2s}
+.search button.go:hover{filter:brightness(1.07)}
+.search button.go svg{width:21px;height:21px}
 
-/* ─────────────────────────────────────────
-   HERO DO CATÁLOGO
-───────────────────────────────────────── */
-.cat-hero{
-  margin-top:var(--nav-h);
-  background:linear-gradient(160deg,var(--marinho) 0%,#1d2f73 55%,#24408f 100%);
-  color:#fff;padding:3.5rem 0 3rem;position:relative;overflow:hidden;
-}
-.cat-hero::after{
-  content:'';position:absolute;top:-140px;right:-100px;width:420px;height:420px;border-radius:50%;
-  background:radial-gradient(circle,var(--azul-cl) 0%,transparent 70%);opacity:.16;pointer-events:none;
-}
-.cat-hero .container{position:relative;z-index:1}
-.cat-tag{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:rgba(185,240,255,.14);border:1px solid rgba(185,240,255,.3);color:var(--azul-cl);
-  padding:6px 14px;border-radius:999px;margin-bottom:1.1rem;
-}
-.cat-tag svg{width:14px;height:14px}
-.cat-hero h1{color:#fff;margin-bottom:.9rem;max-width:18ch}
-.cat-hero h1 em{font-style:normal;color:var(--azul-cl)}
-.cat-hero-sub{color:rgba(255,255,255,.78);max-width:54ch}
+.head-actions{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.h-link{display:flex;align-items:center;gap:8px;color:#fff}
+.h-link svg{width:22px;height:22px;color:var(--azul-cl)}
+.h-link .hl-t{font-size:11px;color:rgba(255,255,255,.7);line-height:1.2}
+.h-link .hl-t b{display:block;font-size:13px;color:#fff;font-weight:600}
+.h-wpp{display:inline-flex;align-items:center;gap:7px;background:var(--wpp);color:#fff;font-size:13px;font-weight:600;padding:10px 16px;border-radius:9px;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 14px rgba(37,211,102,.3)}
+.h-wpp:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(37,211,102,.4)}
+.h-wpp svg{width:16px;height:16px}
+.burger{display:none;background:transparent;border:none;color:#fff;padding:4px}
+.burger svg{width:26px;height:26px}
 
-/* ─────────────────────────────────────────
-   BARRA DE CONTROLE (sticky)
-───────────────────────────────────────── */
-.controls{
-  position:sticky;top:var(--nav-h);z-index:40;
-  background:rgba(242,245,247,.92);backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--borda);padding:1rem 0;
-}
-.controls-inner{display:flex;flex-direction:column;gap:.9rem}
-.search-wrap{position:relative;max-width:520px}
-.search-wrap svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:19px;height:19px;color:var(--txt-sub);pointer-events:none}
-#busca{
-  width:100%;height:50px;padding:0 44px 0 46px;
-  border:1.5px solid var(--borda-ft);border-radius:12px;background:#fff;
-  font-size:1rem;color:var(--marinho);transition:border-color .2s,box-shadow .2s;
-}
-#busca::placeholder{color:var(--txt-sub)}
-#busca:focus{outline:none;border-color:var(--azul-med);box-shadow:0 0 0 4px rgba(77,175,232,.16)}
-.clear-btn{
-  position:absolute;right:8px;top:50%;transform:translateY(-50%);
-  width:30px;height:30px;border:none;background:transparent;border-radius:50%;
-  display:none;align-items:center;justify-content:center;cursor:pointer;color:var(--txt-sub);
-}
-.clear-btn:hover{background:var(--cinza-cl);color:var(--marinho)}
-.clear-btn.show{display:flex}
-.clear-btn svg{width:16px;height:16px}
+/* ───── DEPARTAMENTOS ───── */
+.depts{background:#fff;border-bottom:1px solid var(--borda);position:sticky;top:74px;z-index:55}
+.depts .wrap{display:flex;align-items:center;gap:4px;height:48px;overflow-x:auto;scrollbar-width:none}
+.depts .wrap::-webkit-scrollbar{display:none}
+.dept-all{display:inline-flex;align-items:center;gap:8px;background:var(--marinho);color:#fff;font-size:13.5px;font-weight:600;padding:9px 16px;border-radius:8px;white-space:nowrap;flex-shrink:0;border:none}
+.dept-all svg{width:16px;height:16px}
+.dept{display:inline-flex;align-items:center;gap:6px;background:transparent;border:none;color:var(--marinho);font-size:13.5px;font-weight:500;padding:9px 13px;border-radius:8px;white-space:nowrap;flex-shrink:0;transition:background .15s,color .15s}
+.dept:hover{background:var(--tile)}
+.dept.active{background:var(--tile);color:var(--marinho);font-weight:700;box-shadow:inset 0 -2px 0 var(--azul-med)}
+.dept svg{width:15px;height:15px;color:var(--azul-med)}
 
-/* pills de categoria */
-.pills{display:flex;gap:.6rem;overflow-x:auto;padding-bottom:2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.pills::-webkit-scrollbar{display:none}
-.pill{
-  flex-shrink:0;display:inline-flex;align-items:center;gap:.4rem;
-  height:40px;padding:0 16px;border-radius:999px;cursor:pointer;
-  border:1.5px solid var(--borda-ft);background:#fff;color:var(--marinho);
-  font-size:.875rem;font-weight:600;white-space:nowrap;
-  transition:background .18s,color .18s,border-color .18s,transform .12s;
-}
-.pill svg{width:16px;height:16px}
-.pill:hover{border-color:var(--azul-med)}
-.pill:active{transform:scale(.97)}
-.pill.active{background:var(--marinho);color:#fff;border-color:var(--marinho)}
-.pill .pill-count{font-size:.72rem;font-weight:600;opacity:.6}
+/* ───── BREADCRUMB ───── */
+.crumb{font-size:12.5px;color:var(--txt-sub);padding:14px 0 2px}
+.crumb a:hover{color:var(--marinho)}
+.crumb b{color:var(--marinho);font-weight:600}
+.crumb span{margin:0 7px;color:var(--borda-2)}
 
-/* ─────────────────────────────────────────
-   RESULTADOS
-───────────────────────────────────────── */
-.results{padding:1.75rem 0 4.5rem}
-.results-bar{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
-#contador{color:var(--txt-sub)}
-#contador b{color:var(--marinho)}
-.results-note{color:var(--txt-sub)}
+/* ───── LAYOUT PRINCIPAL ───── */
+.main{display:grid;grid-template-columns:248px 1fr;gap:24px;padding:8px 0 56px;align-items:start}
 
-.grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;
-}
+/* sidebar */
+.side{background:#fff;border:1px solid var(--borda);border-radius:12px;overflow:hidden;position:sticky;top:134px}
+.side-h{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--borda)}
+.side-h b{font-size:14px;font-weight:700}
+.side-h .close{display:none;background:transparent;border:none;color:var(--txt-sub)}
+.side-h .close svg{width:20px;height:20px}
+.fgroup{padding:16px 18px;border-bottom:1px solid var(--borda)}
+.fgroup:last-child{border-bottom:none}
+.fgroup-t{font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--txt-sub);margin-bottom:12px}
+.fcat{display:flex;align-items:center;gap:9px;width:100%;background:transparent;border:none;text-align:left;padding:7px 8px;border-radius:7px;color:var(--marinho);font-size:13.5px;transition:background .15s}
+.fcat:hover{background:var(--cinza-cl)}
+.fcat.active{background:var(--tile);font-weight:700}
+.fcat svg{width:16px;height:16px;color:var(--azul-med);flex-shrink:0}
+.fcat .fc-name{flex:1}
+.fcat .fc-count{font-size:11.5px;color:var(--txt-sub);font-weight:600;background:var(--cinza-cl);padding:1px 8px;border-radius:20px}
+.fcat.active .fc-count{background:#fff}
+.ftags{display:flex;flex-wrap:wrap;gap:7px}
+.ftag{background:var(--cinza-cl);border:1px solid var(--borda);color:var(--marinho);font-size:12px;font-weight:500;padding:6px 11px;border-radius:20px;transition:all .15s}
+.ftag:hover{background:var(--tile);border-color:var(--azul-med)}
+.side-cta{display:block;margin:16px 18px 18px;text-align:center;background:var(--tile);border:1px dashed var(--azul-med);border-radius:10px;padding:14px;color:var(--marinho);font-size:13px;line-height:1.5}
+.side-cta b{display:block;font-size:13.5px;margin-bottom:3px}
+.side-cta .sc-wpp{display:inline-flex;align-items:center;gap:6px;margin-top:8px;background:var(--wpp);color:#fff;font-weight:600;font-size:12.5px;padding:8px 14px;border-radius:8px}
+.side-cta .sc-wpp svg{width:14px;height:14px}
 
-/* CARD DE PRODUTO */
-.card{
-  background:#fff;border:1px solid var(--borda);border-radius:16px;overflow:hidden;
-  display:flex;flex-direction:column;box-shadow:var(--sombra);
-  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
-}
-.card:hover{transform:translateY(-4px);box-shadow:var(--sombra-hv);border-color:var(--borda-ft)}
-.card-tile{
-  position:relative;aspect-ratio:4/3;background:var(--tile);
-  display:flex;align-items:center;justify-content:center;
-  border-bottom:1px solid var(--borda);
-}
-.card-tile svg{width:60px;height:60px;color:var(--marinho);stroke-width:1.5}
-.card-badge{
-  position:absolute;top:10px;left:10px;
-  font-size:.68rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
-  padding:4px 9px;border-radius:7px;color:#fff;
-}
-.card-badge.b-mais{background:var(--laranja)}
-.card-badge.b-promo{background:var(--promo)}
-.card-body{padding:1rem 1rem 1.1rem;display:flex;flex-direction:column;flex:1}
-.card-cat{
-  display:inline-flex;align-items:center;gap:.35rem;align-self:flex-start;
-  color:var(--azul-med);margin-bottom:.5rem;
-}
-.card-cat svg{width:13px;height:13px;stroke-width:2}
-.card-name{color:var(--marinho);margin-bottom:.35rem}
-.card-desc{color:var(--txt-sub);margin-bottom:1rem;flex:1}
-.card-foot{display:flex;align-items:center;justify-content:space-between;gap:.6rem}
-.card-price{display:flex;flex-direction:column;line-height:1.1}
-.card-price .price-label{font-size:.7rem;color:var(--txt-sub);font-weight:500}
-.card-price .price-val{font-size:.95rem;font-weight:700;color:var(--marinho);font-variant-numeric:tabular-nums}
-.card-wpp{
-  display:inline-flex;align-items:center;gap:.4rem;flex-shrink:0;
-  background:var(--wpp);color:#fff;font-size:.8125rem;font-weight:600;
-  padding:9px 13px;border-radius:9px;cursor:pointer;border:none;
-  transition:transform .15s,box-shadow .2s,filter .2s;box-shadow:0 3px 10px rgba(37,211,102,.28);
-}
-.card-wpp:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(37,211,102,.4)}
-.card-wpp:active{transform:translateY(0)}
-.card-wpp svg{width:15px;height:15px}
+/* área de produtos */
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--borda);border-radius:12px;padding:12px 16px;margin-bottom:18px;flex-wrap:wrap}
+.toolbar .tb-count{font-size:14px;color:var(--txt-sub)}
+.toolbar .tb-count b{color:var(--marinho);font-weight:700}
+.toolbar .tb-right{display:flex;align-items:center;gap:10px}
+.btn-filtros{display:none;align-items:center;gap:7px;background:var(--marinho);color:#fff;border:none;font-size:13px;font-weight:600;padding:10px 14px;border-radius:9px}
+.btn-filtros svg{width:16px;height:16px}
+.sortwrap{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt-sub)}
+.sortwrap select{border:1px solid var(--borda-2);border-radius:8px;padding:9px 32px 9px 12px;font-size:13.5px;font-weight:600;color:var(--marinho);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2317245A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 11px center;appearance:none;cursor:pointer}
+.sortwrap select:focus{outline:none;border-color:var(--azul-med)}
 
-/* ESTADO VAZIO */
-.empty{
-  display:none;text-align:center;padding:4rem 1rem;
-}
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.prod{background:#fff;border:1px solid var(--borda);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s}
+.prod:hover{transform:translateY(-3px);box-shadow:var(--sombra-hv);border-color:var(--borda-2)}
+.prod-media{position:relative;aspect-ratio:1/1;background:var(--tile);display:flex;align-items:center;justify-content:center}
+.prod-media svg.ico{width:64px;height:64px;color:var(--marinho);stroke-width:1.4}
+.prod-badge{position:absolute;top:10px;left:10px;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:4px 9px;border-radius:6px;color:#fff}
+.prod-badge.mais{background:var(--laranja)}
+.prod-badge.promo{background:var(--promo)}
+.prod-body{padding:13px 14px 15px;display:flex;flex-direction:column;flex:1}
+.prod-cat{font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--azul-med);margin-bottom:5px}
+.prod-name{font-size:14px;font-weight:600;line-height:1.35;color:var(--marinho);margin-bottom:10px;min-height:38px}
+.prod-price{margin-top:auto;margin-bottom:11px}
+.prod-price .pp-main{font-size:17px;font-weight:800;color:var(--marinho);letter-spacing:-.3px}
+.prod-price .pp-note{font-size:11.5px;color:var(--txt-sub);margin-top:1px}
+.prod-btn{display:flex;align-items:center;justify-content:center;gap:7px;background:var(--wpp);color:#fff;font-size:13.5px;font-weight:700;padding:11px;border-radius:9px;transition:transform .15s,box-shadow .2s;box-shadow:0 3px 10px rgba(37,211,102,.26)}
+.prod-btn:hover{transform:translateY(-1px);box-shadow:0 7px 16px rgba(37,211,102,.4)}
+.prod-btn svg{width:15px;height:15px}
+
+/* estado vazio */
+.empty{display:none;grid-column:1/-1;text-align:center;background:#fff;border:1px solid var(--borda);border-radius:12px;padding:54px 20px}
 .empty.show{display:block}
-.empty-ico{
-  width:72px;height:72px;border-radius:50%;background:var(--tile);
-  display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;
-}
-.empty-ico svg{width:34px;height:34px;color:var(--azul-med);stroke-width:1.5}
-.empty h3{color:var(--marinho);margin-bottom:.5rem}
-.empty p{color:var(--txt-sub);max-width:42ch;margin:0 auto 1.5rem}
-.empty .btn-wpp-lg{
-  display:inline-flex;align-items:center;gap:.55rem;background:var(--wpp);color:#fff;
-  font-size:.95rem;font-weight:600;padding:13px 26px;border-radius:11px;
-  box-shadow:0 6px 18px rgba(37,211,102,.32);transition:transform .2s,box-shadow .2s;
-}
-.empty .btn-wpp-lg:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(37,211,102,.45)}
-.empty .btn-wpp-lg svg{width:18px;height:18px}
+.empty-ico{width:70px;height:70px;border-radius:50%;background:var(--tile);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.empty-ico svg{width:32px;height:32px;color:var(--azul-med)}
+.empty h3{font-size:19px;margin-bottom:7px}
+.empty p{color:var(--txt-sub);max-width:40ch;margin:0 auto 18px}
+.empty .e-wpp{display:inline-flex;align-items:center;gap:8px;background:var(--wpp);color:#fff;font-weight:600;padding:12px 24px;border-radius:10px}
+.empty .e-wpp svg{width:17px;height:17px}
 
-/* ─────────────────────────────────────────
-   FAIXA DE AJUDA
-───────────────────────────────────────── */
-.help-strip{background:var(--azul-cl);padding:2.5rem 0}
-.help-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
-.help-text h2{color:var(--marinho);margin-bottom:.3rem}
-.help-text p{color:#26407a}
-.help-strip .btn-wpp-lg{
-  display:inline-flex;align-items:center;gap:.55rem;background:var(--marinho);color:#fff;
-  font-size:.95rem;font-weight:600;padding:14px 28px;border-radius:11px;flex-shrink:0;
-  transition:transform .2s,box-shadow .2s;box-shadow:0 6px 18px rgba(23,36,90,.25);
-}
-.help-strip .btn-wpp-lg:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(23,36,90,.38)}
-.help-strip .btn-wpp-lg svg{width:18px;height:18px}
+/* paginação (visual) */
+.pager{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:28px}
+.pager button,.pager span{min-width:38px;height:38px;display:flex;align-items:center;justify-content:center;border:1px solid var(--borda);background:#fff;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--marinho)}
+.pager .pg-on{background:var(--marinho);color:#fff;border-color:var(--marinho)}
+.pager .pg-dis{color:var(--borda-2);cursor:default}
 
-/* ─────────────────────────────────────────
-   FOOTER
-───────────────────────────────────────── */
-footer{background:var(--marinho);color:rgba(255,255,255,.85);padding:2.5rem 0}
-.footer-inner{max-width:1200px;margin:0 auto;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
-.footer-logo{display:flex;align-items:center;gap:.65rem}
-.footer-logo-circle{width:38px;height:38px;border-radius:50%;background:var(--azul-cl);display:flex;align-items:center;justify-content:center}
-.footer-logo-circle svg{width:23px;height:23px}
-.footer-brand{font-weight:700;font-size:1rem;color:#fff}
-.footer-copy{font-size:.82rem;color:rgba(255,255,255,.6)}
-.footer-links{display:flex;gap:1.5rem}
-.footer-links a{font-size:.85rem;color:rgba(255,255,255,.85);transition:color .2s}
-.footer-links a:hover{color:var(--azul-cl)}
+/* faixa de ajuda */
+.help{background:var(--azul-cl)}
+.help .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:26px 16px}
+.help h2{font-size:21px;font-weight:700;color:var(--marinho);letter-spacing:-.3px}
+.help p{color:#26407a;font-size:14px;margin-top:3px}
+.help a{display:inline-flex;align-items:center;gap:8px;background:var(--marinho);color:#fff;font-size:14px;font-weight:600;padding:13px 26px;border-radius:10px;flex-shrink:0}
+.help a svg{width:17px;height:17px}
 
-/* ─────────────────────────────────────────
-   WPP FLOAT
-───────────────────────────────────────── */
-.wpp-float{
-  position:fixed;bottom:22px;right:22px;z-index:90;
-  width:58px;height:58px;border-radius:50%;background:var(--wpp);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 8px 24px rgba(37,211,102,.45);transition:transform .2s;
-}
+/* footer */
+footer{background:var(--marinho);color:rgba(255,255,255,.78)}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;padding:40px 16px 30px}
+.foot-col h4{color:#fff;font-size:13px;font-weight:700;letter-spacing:.5px;margin-bottom:14px;text-transform:uppercase}
+.foot-col a,.foot-col p{display:block;font-size:13px;color:rgba(255,255,255,.72);margin-bottom:9px;line-height:1.5}
+.foot-col a:hover{color:var(--azul-cl)}
+.foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.foot-brand .fb-c{width:38px;height:38px;border-radius:50%;background:var(--azul-cl);display:flex;align-items:center;justify-content:center}
+.foot-brand .fb-c svg{width:23px;height:23px}
+.foot-brand b{color:#fff;font-size:15px}
+.foot-bot{border-top:1px solid rgba(255,255,255,.12);padding:16px;text-align:center;font-size:12px;color:rgba(255,255,255,.55)}
+
+/* wpp float */
+.wpp-float{position:fixed;bottom:22px;right:22px;z-index:80;width:56px;height:56px;border-radius:50%;background:var(--wpp);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.45);transition:transform .2s}
 .wpp-float:hover{transform:scale(1.08)}
 .wpp-float svg{width:30px;height:30px;fill:#fff}
 
-/* ─────────────────────────────────────────
-   RESPONSIVO
-───────────────────────────────────────── */
-@media(max-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:768px){
-  .grid{grid-template-columns:repeat(2,1fr);gap:1rem}
-  .nav-links li.hide-mob{display:none}
-  .nav-links{gap:1.1rem}
-  .cat-hero{padding:2.75rem 0 2.25rem}
-  .card-tile svg{width:50px;height:50px}
-  .card-foot{flex-direction:column;align-items:stretch}
-  .card-wpp{justify-content:center}
-}
-@media(max-width:430px){
-  .grid{grid-template-columns:1fr 1fr;gap:.75rem}
-  .card-body{padding:.8rem .8rem .9rem}
-  .card-name{font-size:.9rem}
-  .nav-logo-text{font-size:.95rem}
-}
+/* overlay (drawer mobile) */
+.overlay{position:fixed;inset:0;background:rgba(13,18,30,.5);z-index:70;opacity:0;visibility:hidden;transition:opacity .25s}
+.overlay.show{opacity:1;visibility:visible}
 
-/* reduz movimento */
-@media(prefers-reduced-motion:reduce){
-  *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+/* ───── RESPONSIVO ───── */
+@media(max-width:1024px){ .grid{grid-template-columns:repeat(3,1fr)} }
+@media(max-width:900px){
+  .main{grid-template-columns:1fr}
+  .side{position:fixed;top:0;left:0;bottom:0;width:300px;max-width:86vw;border-radius:0;z-index:75;transform:translateX(-100%);transition:transform .28s ease;overflow-y:auto}
+  .side.open{transform:translateX(0)}
+  .side-h .close{display:block}
+  .btn-filtros{display:inline-flex}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .foot-top{grid-template-columns:1fr 1fr}
 }
+@media(max-width:720px){
+  .head .wrap{flex-wrap:wrap;height:auto;padding-top:12px;padding-bottom:12px;gap:12px}
+  .brand{order:1}
+  .head-actions{order:2;margin-left:auto}
+  .search{order:3;flex-basis:100%;max-width:none}
+  .head{position:static}
+  .depts{position:sticky;top:0}
+  .h-link.atend{display:none}
+  .help .wrap{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  .grid{grid-template-columns:repeat(2,1fr);gap:11px}
+  .prod-media svg.ico{width:52px;height:52px}
+  .prod-name{font-size:13px;min-height:34px}
+  .foot-top{grid-template-columns:1fr}
+  .h-wpp .hw-t{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
-<nav aria-label="Navegação principal">
-  <div class="nav-inner">
-    <a class="nav-logo" href="index.html" aria-label="Bazar Cariocão — página inicial">
-      <span class="nav-logo-circle">
-        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <ellipse cx="10" cy="22" rx="9" ry="8" fill="#17245A"/>
-          <ellipse cx="26" cy="22" rx="9" ry="8" fill="#17245A"/>
-          <line x1="5" y1="14" x2="31" y2="14" stroke="#17245A" stroke-width="1.5"/>
-          <rect x="16" y="8" width="4" height="7" rx="1.5" fill="#17245A"/>
-        </svg>
-      </span>
-      <span class="nav-logo-text">Bazar Cariocão</span>
-    </a>
-    <ul class="nav-links">
-      <li class="hide-mob"><a href="index.html">Início</a></li>
-      <li><a href="catalogo.html" class="active" aria-current="page">Catálogo</a></li>
-      <li><a href="https://wa.me/5521990063878" class="nav-cta" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.553 4.1 1.521 5.827L.057 23.857c-.067.247.153.466.399.398l6.098-1.598A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-        WhatsApp</a></li>
-    </ul>
-  </div>
-</nav>
+<!-- LOGO SVG reutilizável via <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="logo-bc"><ellipse cx="10" cy="22" rx="9" ry="8" fill="#17245A"/><ellipse cx="26" cy="22" rx="9" ry="8" fill="#17245A"/><line x1="5" y1="14" x2="31" y2="14" stroke="#17245A" stroke-width="1.5"/><rect x="16" y="8" width="4" height="7" rx="1.5" fill="#17245A"/></g>
+</defs></svg>
 
-<!-- ─── HERO ─── -->
-<header class="cat-hero">
-  <div class="container">
-    <div class="cat-tag caption-up">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18M9 21V9"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-      Catálogo · Atacado &amp; Varejo
-    </div>
-    <h1 class="display-sm">Tudo o que a obra, o reparo e o dia a dia pedem — <em>num lugar só.</em></h1>
-    <p class="cat-hero-sub body-md">Mais de 5.000 itens em ferramentas, hidráulica, elétrica, ferragens, papelaria, limpeza e utilidades. Encontre o produto, peça o preço pelo WhatsApp e retire no Centro do Rio.</p>
-  </div>
-</header>
-
-<!-- ─── CONTROLES ─── -->
-<div class="controls">
-  <div class="container controls-inner">
-    <div class="search-wrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input id="busca" type="search" placeholder="Buscar produto: furadeira, torneira, fio, caneta…" aria-label="Buscar produto no catálogo" autocomplete="off">
-      <button class="clear-btn" id="limpar" aria-label="Limpar busca" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div class="pills" id="pills" role="tablist" aria-label="Filtrar por categoria"></div>
+<!-- ───── TOP BAR ───── -->
+<div class="topbar">
+  <div class="wrap">
+    <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> R. Luís de Camões, 8 – Centro/RJ</span>
+    <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Seg a Sáb · <strong>08h às 18h</strong></span>
+    <span class="spacer"></span>
+    <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> <strong>(21) 99006-3878</strong></span>
+    <span class="ti">Atacado &amp; Varejo</span>
   </div>
 </div>
 
-<!-- ─── RESULTADOS ─── -->
-<main class="results">
-  <div class="container">
-    <div class="results-bar">
-      <span id="contador" class="body-sm"></span>
-      <span class="results-note body-sm">Preços confirmados pelo WhatsApp · Atacado e varejo</span>
-    </div>
-    <div class="grid" id="grid" aria-live="polite"></div>
+<!-- ───── HEADER ───── -->
+<header class="head">
+  <div class="wrap">
+    <button class="burger" id="burger" aria-label="Abrir filtros"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <a class="brand" href="index.html" aria-label="Bazar Cariocão — início">
+      <span class="brand-circle"><svg viewBox="0 0 36 36"><use href="#logo-bc"/></svg></span>
+      <span class="brand-txt"><b>Bazar Cariocão</b><span>CENTRO · RIO DE JANEIRO</span></span>
+    </a>
 
-    <div class="empty" id="vazio">
-      <div class="empty-ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      </div>
-      <h3 class="title-lg">Não achamos esse item por aqui</h3>
-      <p class="body-md">O catálogo é uma amostra do nosso estoque. Se você procura algo específico, é só chamar — provavelmente temos.</p>
-      <a class="btn-wpp-lg" href="https://wa.me/5521990063878?text=Ol%C3%A1!%20Procuro%20um%20produto%20que%20n%C3%A3o%20achei%20no%20cat%C3%A1logo." target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.553 4.1 1.521 5.827L.057 23.857c-.067.247.153.466.399.398l6.098-1.598A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-        Pedir pelo WhatsApp
+    <div class="search" role="search">
+      <input id="busca" type="search" placeholder="Busque por produto: furadeira, torneira, fio, caneta…" aria-label="Buscar produto" autocomplete="off">
+      <button class="clr" id="limpar" type="button" aria-label="Limpar busca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <button class="go" id="goBusca" type="button" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+    </div>
+
+    <div class="head-actions">
+      <span class="h-link atend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg><span class="hl-t">Atendimento<b>Seg–Sáb 8–18h</b></span></span>
+      <a class="h-wpp" href="https://wa.me/5521990063878" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.553 4.1 1.521 5.827L.057 23.857l6.155-1.615A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        <span class="hw-t">WhatsApp</span>
       </a>
     </div>
   </div>
-</main>
+</header>
 
-<!-- ─── FAIXA DE AJUDA ─── -->
-<section class="help-strip">
-  <div class="container help-inner">
-    <div class="help-text">
-      <h2 class="title-lg">Compra em quantidade? Faça seu pedido de atacado.</h2>
-      <p class="body-md">Monte sua lista e mande pelo WhatsApp. A gente passa o melhor preço e separa pra retirada.</p>
+<!-- ───── DEPARTAMENTOS ───── -->
+<nav class="depts" aria-label="Departamentos">
+  <div class="wrap" id="depts"></div>
+</nav>
+
+<!-- ───── CONTEÚDO ───── -->
+<div class="wrap">
+  <div class="crumb"><a href="index.html">Início</a><span>›</span><a href="catalogo.html">Catálogo</a><span>›</span><b id="crumbCat">Todos os produtos</b></div>
+
+  <div class="main">
+    <!-- SIDEBAR -->
+    <aside class="side" id="side" aria-label="Filtros">
+      <div class="side-h"><b>Filtrar</b><button class="close" id="closeSide" aria-label="Fechar filtros"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+      <div class="fgroup">
+        <div class="fgroup-t">Departamentos</div>
+        <div id="fcats"></div>
+      </div>
+      <div class="fgroup">
+        <div class="fgroup-t">Buscas populares</div>
+        <div class="ftags" id="ftags"></div>
+      </div>
+      <div class="side-cta">
+        Não achou o que procura?
+        <b>A gente tem mais de 5.000 itens.</b>
+        <a class="sc-wpp" href="https://wa.me/5521990063878?text=Ol%C3%A1!%20Procuro%20um%20produto%20que%20n%C3%A3o%20achei%20no%20cat%C3%A1logo." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.1 1.5 5.8L0 24l6.3-1.6A11.9 11.9 0 0 0 12 24c6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg> Pedir no WhatsApp</a>
+      </div>
+    </aside>
+
+    <!-- PRODUTOS -->
+    <section>
+      <div class="toolbar">
+        <button class="btn-filtros" id="openFiltros"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18M6 12h12M10 20h4"/></svg> Filtros</button>
+        <span class="tb-count" id="contador"></span>
+        <div class="tb-right">
+          <div class="sortwrap">
+            <label for="ordenar">Ordenar:</label>
+            <select id="ordenar" aria-label="Ordenar por">
+              <option value="rel">Relevância</option>
+              <option value="az">Nome (A–Z)</option>
+              <option value="za">Nome (Z–A)</option>
+              <option value="cat">Categoria</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" id="grid" aria-live="polite"></div>
+
+      <div class="empty" id="vazio">
+        <div class="empty-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <h3>Nenhum produto encontrado</h3>
+        <p>O catálogo é uma amostra do nosso estoque. Se procura algo específico, fale com a gente — provavelmente temos.</p>
+        <a class="e-wpp" href="https://wa.me/5521990063878?text=Ol%C3%A1!%20Procuro%20um%20produto%20que%20n%C3%A3o%20achei%20no%20cat%C3%A1logo." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.1 1.5 5.8L0 24l6.3-1.6A11.9 11.9 0 0 0 12 24c6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg> Pedir pelo WhatsApp</a>
+      </div>
+
+      <div class="pager" id="pager" aria-label="Paginação"></div>
+    </section>
+  </div>
+</div>
+
+<!-- ───── FAIXA DE AJUDA ───── -->
+<section class="help">
+  <div class="wrap">
+    <div>
+      <h2>Não achou em estoque? Encomende pelo catálogo.</h2>
+      <p>Peça pelo WhatsApp o que precisar — a gente verifica e providencia para você. Atacado e varejo.</p>
     </div>
-    <a class="btn-wpp-lg" href="https://wa.me/5521990063878?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido%20de%20atacado." target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.553 4.1 1.521 5.827L.057 23.857c-.067.247.153.466.399.398l6.098-1.598A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-      Falar com vendas
-    </a>
+    <a href="https://wa.me/5521990063878?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido%20de%20atacado." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.1 1.5 5.8L0 24l6.3-1.6A11.9 11.9 0 0 0 12 24c6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg> Falar com vendas</a>
   </div>
 </section>
 
-<!-- ─── FOOTER ─── -->
+<!-- ───── FOOTER ───── -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <span class="footer-logo-circle" aria-hidden="true">
-        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="10" cy="22" rx="9" ry="8" fill="#17245A"/>
-          <ellipse cx="26" cy="22" rx="9" ry="8" fill="#17245A"/>
-          <line x1="5" y1="14" x2="31" y2="14" stroke="#17245A" stroke-width="1.5"/>
-          <rect x="16" y="8" width="4" height="7" rx="1.5" fill="#17245A"/>
-        </svg>
-      </span>
-      <span class="footer-brand">Bazar Cariocão</span>
+  <div class="wrap foot-top">
+    <div class="foot-col">
+      <div class="foot-brand"><span class="fb-c"><svg viewBox="0 0 36 36"><use href="#logo-bc"/></svg></span><b>Bazar Cariocão</b></div>
+      <p>A loja mais completa do Centro do Rio. Atacado e varejo em ferramentas, hidráulica, elétrica, ferragens, papelaria, limpeza e utilidades.</p>
+      <p>R. Luís de Camões, 8 – Centro/RJ</p>
     </div>
-    <span class="footer-copy">© 2026 Bazar Cariocão · R. Luís de Camões, 8 – Centro/RJ · (21) 99006-3878</span>
-    <div class="footer-links">
-      <a href="index.html">Início</a>
+    <div class="foot-col">
+      <h4>Departamentos</h4>
+      <a href="#" data-dep="ferramentas">Ferramentas</a>
+      <a href="#" data-dep="hidraulica">Hidráulica</a>
+      <a href="#" data-dep="eletrica">Elétrica</a>
+      <a href="#" data-dep="papelaria">Papelaria</a>
+    </div>
+    <div class="foot-col">
+      <h4>Atendimento</h4>
+      <a href="https://wa.me/5521990063878" target="_blank" rel="noopener">WhatsApp (21) 99006-3878</a>
+      <a href="mailto:bazarcariocaorj@gmail.com">bazarcariocaorj@gmail.com</a>
+      <p>Seg a Sáb · 08h às 18h</p>
+      <a href="index.html">Página inicial</a>
+    </div>
+    <div class="foot-col">
+      <h4>Siga a loja</h4>
       <a href="https://www.instagram.com/bazarcariocao" target="_blank" rel="noopener">Instagram</a>
       <a href="https://wa.me/5521990063878" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
+  <div class="foot-bot">© 2026 Bazar Cariocão · Atacado &amp; Varejo · Centro/RJ — Protótipo</div>
 </footer>
 
-<!-- ─── WPP FLOAT ─── -->
 <a href="https://wa.me/5521990063878" class="wpp-float" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.553 4.1 1.521 5.827L.057 23.857c-.067.247.153.466.399.398l6.098-1.598A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.012-1.372l-.36-.213-3.724.976.994-3.638-.233-.374A9.818 9.818 0 1112 21.818z"/>
-  </svg>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.553 4.1 1.521 5.827L.057 23.857l6.155-1.615A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.012-1.372l-.36-.213-3.724.976.994-3.638-.233-.374A9.818 9.818 0 1 1 12 21.818z"/></svg>
 </a>
 
-<!-- ─── JS ─── -->
-<script>
-const WPP = '5521990063878';
+<div class="overlay" id="overlay"></div>
 
-/* Ícones SVG por categoria (Lucide-style, stroke=currentColor) */
-const ICONS = {
+<script>
+const WPP='5521990063878';
+const ICONS={
   ferramentas:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
   hidraulica:'<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
   eletrica:'<path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>',
@@ -433,171 +377,190 @@ const ICONS = {
   utilidades:'<path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/>',
   descartaveis:'<path d="m6 8 1.75 12.28a2 2 0 0 0 2 1.72h4.54a2 2 0 0 0 2-1.72L18 8"/><path d="M5 8h14"/><path d="M7 15a6.47 6.47 0 0 1 5 0 6.47 6.47 0 0 0 5 0"/>'
 };
-const CATS = [
-  {id:'ferramentas', nome:'Ferramentas'},
-  {id:'hidraulica',  nome:'Hidráulica'},
-  {id:'eletrica',    nome:'Elétrica'},
-  {id:'ferragens',   nome:'Ferragens'},
-  {id:'papelaria',   nome:'Papelaria'},
-  {id:'limpeza',     nome:'Limpeza'},
-  {id:'utilidades',  nome:'Utilidades'},
-  {id:'descartaveis',nome:'Descartáveis'}
+const CATS=[
+  {id:'ferramentas',nome:'Ferramentas'},{id:'hidraulica',nome:'Hidráulica'},
+  {id:'eletrica',nome:'Elétrica'},{id:'ferragens',nome:'Ferragens'},
+  {id:'papelaria',nome:'Papelaria'},{id:'limpeza',nome:'Limpeza'},
+  {id:'utilidades',nome:'Utilidades'},{id:'descartaveis',nome:'Descartáveis'}
 ];
-const NOME = Object.fromEntries(CATS.map(c=>[c.id,c.nome]));
+const NOME=Object.fromEntries(CATS.map(c=>[c.id,c.nome]));
+const POPULAR=['Furadeira','Torneira','Fio flexível','Caneta','Detergente','Cadeado','Lâmpada','Caixa organizadora'];
 
-/* Catálogo de exemplo (itens fictícios realistas — trocar pelos reais depois) */
-const PRODUTOS = [
-  // Ferramentas
-  {n:'Furadeira de impacto 650W', c:'ferramentas', d:'Mandril 13mm, reversível, com maleta.', tag:'mais'},
-  {n:'Jogo de chaves de fenda 6 pç', c:'ferramentas', d:'Pontas Phillips e fenda, cabo emborrachado.'},
-  {n:'Martelo unha 27mm', c:'ferramentas', d:'Cabo de fibra, antichoque.'},
-  {n:'Alicate universal 8"', c:'ferramentas', d:'Aço cromo-vanádio, isolado.'},
-  {n:'Trena 5m', c:'ferramentas', d:'Fita larga com trava e clipe.'},
-  {n:'Serrote 20"', c:'ferramentas', d:'Dentes temperados, cabo ergonômico.'},
-  {n:'Nível de bolha 40cm', c:'ferramentas', d:'Alumínio com 3 bolhas.'},
-  {n:'Parafusadeira a bateria 12V', c:'ferramentas', d:'Com carregador e 2 baterias.'},
-  // Hidráulica
-  {n:'Tubo PVC 25mm — barra 3m', c:'hidraulica', d:'Soldável, para água fria.'},
-  {n:'Joelho 90° 25mm', c:'hidraulica', d:'PVC soldável, pacote com 10.'},
-  {n:'Torneira de cozinha cromada', c:'hidraulica', d:'Bica móvel, parede ou bancada.', tag:'mais'},
-  {n:'Veda rosca 18mm x 50m', c:'hidraulica', d:'Fita PTFE para vedação de roscas.'},
-  {n:'Sifão sanfonado universal', c:'hidraulica', d:'Ajustável, pia e tanque.'},
-  {n:'Registro de gaveta 3/4"', c:'hidraulica', d:'Bruto, com acabamento opcional.'},
-  {n:'Ducha higiênica com gatilho', c:'hidraulica', d:'Cromada, mangueira 1,2m.'},
-  {n:'Caixa de descarga acoplada', c:'hidraulica', d:'Acionamento duplo, 3/6L.'},
-  // Elétrica
-  {n:'Fio flexível 2,5mm — rolo 100m', c:'eletrica', d:'750V, antichama, vários cores.', tag:'mais'},
-  {n:'Disjuntor monopolar 20A', c:'eletrica', d:'Curva C, padrão DIN.'},
-  {n:'Tomada 2P+T 10A', c:'eletrica', d:'Com placa, padrão brasileiro.'},
-  {n:'Interruptor simples', c:'eletrica', d:'1 tecla, com espelho.'},
-  {n:'Lâmpada LED 9W', c:'eletrica', d:'Bivolt, branca, soquete E27.'},
-  {n:'Fita isolante 20m', c:'eletrica', d:'Antichama, alta aderência.'},
-  {n:'Extensão 5m com filtro', c:'eletrica', d:'4 tomadas, 10A.'},
-  {n:'Soquete E27 de teto', c:'eletrica', d:'Porcelana, alta resistência.'},
-  // Ferragens
-  {n:'Parafuso + bucha 6mm — 100 un', c:'ferragens', d:'Kit para alvenaria.'},
-  {n:'Dobradiça 3" — par', c:'ferragens', d:'Aço, com parafusos.'},
-  {n:'Cadeado 40mm', c:'ferragens', d:'Latão, com 3 chaves.'},
-  {n:'Fechadura externa', c:'ferragens', d:'Trinco reforçado, espelho inox.'},
-  {n:'Corrente galvanizada — metro', c:'ferragens', d:'Elo curto, venda por metro.'},
-  {n:'Prego 17x27 — 1kg', c:'ferragens', d:'Com cabeça, aço polido.'},
-  {n:'Arruela lisa — 100 un', c:'ferragens', d:'Zincada, diversos diâmetros.'},
-  {n:'Abraçadeira nylon 200mm', c:'ferragens', d:'Pacote com 100, alta tração.'},
-  // Papelaria
-  {n:'Caneta esferográfica azul — cx 50', c:'papelaria', d:'Escrita macia, ponta 1.0mm.', tag:'mais'},
-  {n:'Caderno universitário 96 fls', c:'papelaria', d:'Capa dura, 1 matéria.'},
-  {n:'Papel A4 — resma 500 fls', c:'papelaria', d:'75g, alvura 90%.'},
-  {n:'Fita adesiva transparente', c:'papelaria', d:'12mm x 40m, pacote com 10.'},
-  {n:'Pasta plástica com elástico', c:'papelaria', d:'Ofício, várias cores.'},
-  {n:'Cola branca 90g', c:'papelaria', d:'Lavável, atóxica.'},
-  {n:'Marca-texto — kit 4 cores', c:'papelaria', d:'Ponta chanfrada.'},
-  {n:'Grampeador médio 26/6', c:'papelaria', d:'Capacidade 25 folhas.'},
-  // Limpeza
-  {n:'Detergente neutro 5L', c:'limpeza', d:'Concentrado, rende mais.', tag:'promo'},
-  {n:'Água sanitária 5L', c:'limpeza', d:'Multiuso, alveja e desinfeta.'},
-  {n:'Pano multiuso — pacote', c:'limpeza', d:'Perfurado, 50 unidades.'},
-  {n:'Vassoura de pelo macio', c:'limpeza', d:'Cabo reforçado.'},
-  {n:'Rodo 40cm', c:'limpeza', d:'Borracha dupla, cabo de alumínio.'},
-  {n:'Desinfetante lavanda 2L', c:'limpeza', d:'Perfume prolongado.'},
-  {n:'Saco de lixo 100L — pacote', c:'limpeza', d:'Reforçado, 100 unidades.'},
-  {n:'Esponja dupla face — caixa', c:'limpeza', d:'Multiuso, caixa com 60.'},
-  // Utilidades
-  {n:'Caixa organizadora 30L', c:'utilidades', d:'Com tampa, empilhável.', tag:'mais'},
-  {n:'Jogo de potes herméticos', c:'utilidades', d:'10 peças, tampa com trava.'},
-  {n:'Lixeira com pedal 12L', c:'utilidades', d:'Plástica, balde removível.'},
-  {n:'Garrafa térmica 1L', c:'utilidades', d:'Conserva quente e frio.'},
-  {n:'Bacia plástica 20L', c:'utilidades', d:'Resistente, uso geral.'},
-  {n:'Tábua de carne polietileno', c:'utilidades', d:'Atóxica, fácil higienização.'},
-  {n:'Cabide — pacote 10', c:'utilidades', d:'Plástico reforçado.'},
-  {n:'Balde 12L com alça', c:'utilidades', d:'Graduado, alça metálica.'},
-  // Descartáveis
-  {n:'Copo descartável 200ml — cx', c:'descartaveis', d:'Caixa com 2.500 unidades.'},
-  {n:'Marmitex de alumínio — pacote', c:'descartaveis', d:'Nº 8, com tampa, 100 un.'},
-  {n:'Guardanapo folha simples — fardo', c:'descartaveis', d:'24x22cm, alto rendimento.'},
-  {n:'Talher descartável — cx', c:'descartaveis', d:'Garfo, faca e colher.'},
-  {n:'Prato descartável 18cm', c:'descartaveis', d:'Pacote com 100, resistente.'},
-  {n:'Touca descartável — cx', c:'descartaveis', d:'Sanfonada, 100 unidades.'},
-  {n:'Saco kraft — pacote', c:'descartaveis', d:'Para viagem, vários tamanhos.'},
-  {n:'Filme PVC 28cm x 30m', c:'descartaveis', d:'Esticável, uso alimentar.'}
+const PRODUTOS=[
+  {n:'Furadeira de impacto 650W',c:'ferramentas',d:'Mandril 13mm, reversível, com maleta.',tag:'mais'},
+  {n:'Jogo de chaves de fenda 6 pç',c:'ferramentas',d:'Pontas Phillips e fenda, cabo emborrachado.'},
+  {n:'Martelo unha 27mm',c:'ferramentas',d:'Cabo de fibra, antichoque.'},
+  {n:'Alicate universal 8"',c:'ferramentas',d:'Aço cromo-vanádio, isolado.'},
+  {n:'Trena 5m',c:'ferramentas',d:'Fita larga com trava e clipe.'},
+  {n:'Serrote 20"',c:'ferramentas',d:'Dentes temperados, cabo ergonômico.'},
+  {n:'Nível de bolha 40cm',c:'ferramentas',d:'Alumínio com 3 bolhas.'},
+  {n:'Parafusadeira a bateria 12V',c:'ferramentas',d:'Com carregador e 2 baterias.'},
+  {n:'Tubo PVC 25mm — barra 3m',c:'hidraulica',d:'Soldável, para água fria.'},
+  {n:'Joelho 90° 25mm',c:'hidraulica',d:'PVC soldável, pacote com 10.'},
+  {n:'Torneira de cozinha cromada',c:'hidraulica',d:'Bica móvel, parede ou bancada.',tag:'mais'},
+  {n:'Veda rosca 18mm x 50m',c:'hidraulica',d:'Fita PTFE para vedação de roscas.'},
+  {n:'Sifão sanfonado universal',c:'hidraulica',d:'Ajustável, pia e tanque.'},
+  {n:'Registro de gaveta 3/4"',c:'hidraulica',d:'Bruto, com acabamento opcional.'},
+  {n:'Ducha higiênica com gatilho',c:'hidraulica',d:'Cromada, mangueira 1,2m.'},
+  {n:'Caixa de descarga acoplada',c:'hidraulica',d:'Acionamento duplo, 3/6L.'},
+  {n:'Fio flexível 2,5mm — rolo 100m',c:'eletrica',d:'750V, antichama, várias cores.',tag:'mais'},
+  {n:'Disjuntor monopolar 20A',c:'eletrica',d:'Curva C, padrão DIN.'},
+  {n:'Tomada 2P+T 10A',c:'eletrica',d:'Com placa, padrão brasileiro.'},
+  {n:'Interruptor simples',c:'eletrica',d:'1 tecla, com espelho.'},
+  {n:'Lâmpada LED 9W',c:'eletrica',d:'Bivolt, branca, soquete E27.'},
+  {n:'Fita isolante 20m',c:'eletrica',d:'Antichama, alta aderência.'},
+  {n:'Extensão 5m com filtro',c:'eletrica',d:'4 tomadas, 10A.'},
+  {n:'Soquete E27 de teto',c:'eletrica',d:'Porcelana, alta resistência.'},
+  {n:'Parafuso + bucha 6mm — 100 un',c:'ferragens',d:'Kit para alvenaria.'},
+  {n:'Dobradiça 3" — par',c:'ferragens',d:'Aço, com parafusos.'},
+  {n:'Cadeado 40mm',c:'ferragens',d:'Latão, com 3 chaves.'},
+  {n:'Fechadura externa',c:'ferragens',d:'Trinco reforçado, espelho inox.'},
+  {n:'Corrente galvanizada — metro',c:'ferragens',d:'Elo curto, venda por metro.'},
+  {n:'Prego 17x27 — 1kg',c:'ferragens',d:'Com cabeça, aço polido.'},
+  {n:'Arruela lisa — 100 un',c:'ferragens',d:'Zincada, diversos diâmetros.'},
+  {n:'Abraçadeira nylon 200mm',c:'ferragens',d:'Pacote com 100, alta tração.'},
+  {n:'Caneta esferográfica azul — cx 50',c:'papelaria',d:'Escrita macia, ponta 1.0mm.',tag:'mais'},
+  {n:'Caderno universitário 96 fls',c:'papelaria',d:'Capa dura, 1 matéria.'},
+  {n:'Papel A4 — resma 500 fls',c:'papelaria',d:'75g, alvura 90%.'},
+  {n:'Fita adesiva transparente',c:'papelaria',d:'12mm x 40m, pacote com 10.'},
+  {n:'Pasta plástica com elástico',c:'papelaria',d:'Ofício, várias cores.'},
+  {n:'Cola branca 90g',c:'papelaria',d:'Lavável, atóxica.'},
+  {n:'Marca-texto — kit 4 cores',c:'papelaria',d:'Ponta chanfrada.'},
+  {n:'Grampeador médio 26/6',c:'papelaria',d:'Capacidade 25 folhas.'},
+  {n:'Detergente neutro 5L',c:'limpeza',d:'Concentrado, rende mais.',tag:'promo'},
+  {n:'Água sanitária 5L',c:'limpeza',d:'Multiuso, alveja e desinfeta.'},
+  {n:'Pano multiuso — pacote',c:'limpeza',d:'Perfurado, 50 unidades.'},
+  {n:'Vassoura de pelo macio',c:'limpeza',d:'Cabo reforçado.'},
+  {n:'Rodo 40cm',c:'limpeza',d:'Borracha dupla, cabo de alumínio.'},
+  {n:'Desinfetante lavanda 2L',c:'limpeza',d:'Perfume prolongado.'},
+  {n:'Saco de lixo 100L — pacote',c:'limpeza',d:'Reforçado, 100 unidades.'},
+  {n:'Esponja dupla face — caixa',c:'limpeza',d:'Multiuso, caixa com 60.'},
+  {n:'Caixa organizadora 30L',c:'utilidades',d:'Com tampa, empilhável.',tag:'mais'},
+  {n:'Jogo de potes herméticos',c:'utilidades',d:'10 peças, tampa com trava.'},
+  {n:'Lixeira com pedal 12L',c:'utilidades',d:'Plástica, balde removível.'},
+  {n:'Garrafa térmica 1L',c:'utilidades',d:'Conserva quente e frio.'},
+  {n:'Bacia plástica 20L',c:'utilidades',d:'Resistente, uso geral.'},
+  {n:'Tábua de carne polietileno',c:'utilidades',d:'Atóxica, fácil higienização.'},
+  {n:'Cabide — pacote 10',c:'utilidades',d:'Plástico reforçado.'},
+  {n:'Balde 12L com alça',c:'utilidades',d:'Graduado, alça metálica.'},
+  {n:'Copo descartável 200ml — cx',c:'descartaveis',d:'Caixa com 2.500 unidades.'},
+  {n:'Marmitex de alumínio — pacote',c:'descartaveis',d:'Nº 8, com tampa, 100 un.'},
+  {n:'Guardanapo folha simples — fardo',c:'descartaveis',d:'24x22cm, alto rendimento.'},
+  {n:'Talher descartável — cx',c:'descartaveis',d:'Garfo, faca e colher.'},
+  {n:'Prato descartável 18cm',c:'descartaveis',d:'Pacote com 100, resistente.'},
+  {n:'Touca descartável — cx',c:'descartaveis',d:'Sanfonada, 100 unidades.'},
+  {n:'Saco kraft — pacote',c:'descartaveis',d:'Para viagem, vários tamanhos.'},
+  {n:'Filme PVC 28cm x 30m',c:'descartaveis',d:'Esticável, uso alimentar.'}
 ];
+PRODUTOS.forEach((p,i)=>p.i=i);
 
-const grid = document.getElementById('grid');
-const vazio = document.getElementById('vazio');
-const contador = document.getElementById('contador');
-const pillsEl = document.getElementById('pills');
-const busca = document.getElementById('busca');
-const limpar = document.getElementById('limpar');
+const $=s=>document.querySelector(s);
+const grid=$('#grid'),vazio=$('#vazio'),contador=$('#contador'),pager=$('#pager');
+const busca=$('#busca'),limpar=$('#limpar'),ordenar=$('#ordenar');
+const side=$('#side'),overlay=$('#overlay');
 
-let filtroCat = 'todos';
-let termo = '';
+let cat='todos',termo='',sort='rel',pagina=1;
+const PORPAG=12;
 
-function ico(c){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICONS[c]+'</svg>'; }
-function norm(s){ return s.toLowerCase().replace(/[áàâãä]/g,'a').replace(/[éèêë]/g,'e').replace(/[íìîï]/g,'i').replace(/[óòôõö]/g,'o').replace(/[úùûü]/g,'u').replace(/ç/g,'c'); }
+const ico=c=>'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">'+ICONS[c]+'</svg>';
+const icoSm=c=>'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+ICONS[c]+'</svg>';
+const norm=s=>s.toLowerCase().replace(/[áàâãä]/g,'a').replace(/[éèêë]/g,'e').replace(/[íìîï]/g,'i').replace(/[óòôõö]/g,'o').replace(/[úùûü]/g,'u').replace(/ç/g,'c');
+const conta=id=>id==='todos'?PRODUTOS.length:PRODUTOS.filter(p=>p.c===id).length;
+function wppLink(p){return 'https://wa.me/'+WPP+'?text='+encodeURIComponent('Olá! Tenho interesse neste item do catálogo:\n\n*'+p.n+'* ('+NOME[p.c]+')\n\nPode me passar o valor e a disponibilidade?');}
 
-function wppLink(p){
-  const txt = 'Olá! Tenho interesse neste item do catálogo:\n\n*'+p.n+'* ('+NOME[p.c]+')\n\nPode me passar o valor e a disponibilidade?';
-  return 'https://wa.me/'+WPP+'?text='+encodeURIComponent(txt);
-}
-
-/* Monta as pills de categoria */
-function montaPills(){
-  const conta = id => id==='todos' ? PRODUTOS.length : PRODUTOS.filter(p=>p.c===id).length;
-  const todos = [{id:'todos', nome:'Todos'}].concat(CATS);
-  pillsEl.innerHTML = todos.map(c=>{
-    const ic = c.id==='todos' ? '' : ico(c.id);
-    return '<button class="pill'+(c.id===filtroCat?' active':'')+'" role="tab" data-cat="'+c.id+'" aria-selected="'+(c.id===filtroCat)+'">'
-      + ic + '<span>'+c.nome+'</span> <span class="pill-count">'+conta(c.id)+'</span></button>';
+/* DEPARTAMENTOS (nav superior) */
+function montaDepts(){
+  const all=[{id:'todos',nome:'Todos os departamentos'}].concat(CATS);
+  $('#depts').innerHTML=all.map((c,k)=>{
+    if(c.id==='todos') return '<button class="dept-all" data-cat="todos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>'+c.nome+'</button>';
+    return '<button class="dept'+(c.id===cat?' active':'')+'" data-cat="'+c.id+'">'+icoSm(c.id)+c.nome+'</button>';
   }).join('');
-  pillsEl.querySelectorAll('.pill').forEach(b=>{
-    b.addEventListener('click',()=>{ filtroCat=b.dataset.cat; montaPills(); render(); });
-  });
+  $('#depts').querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>setCat(b.dataset.cat));
+}
+/* SIDEBAR categorias */
+function montaSide(){
+  const all=[{id:'todos',nome:'Todos os produtos'}].concat(CATS);
+  $('#fcats').innerHTML=all.map(c=>{
+    const icon=c.id==='todos'?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/></svg>':icoSm(c.id);
+    return '<button class="fcat'+(c.id===cat?' active':'')+'" data-cat="'+c.id+'">'+icon+'<span class="fc-name">'+c.nome+'</span><span class="fc-count">'+conta(c.id)+'</span></button>';
+  }).join('');
+  $('#fcats').querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{setCat(b.dataset.cat);fecharDrawer();});
+  $('#ftags').innerHTML=POPULAR.map(t=>'<button class="ftag" data-q="'+t+'">'+t+'</button>').join('');
+  $('#ftags').querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{busca.value=b.dataset.q;termo=b.dataset.q;limpar.classList.add('show');pagina=1;render();fecharDrawer();window.scrollTo({top:0,behavior:'smooth'});});
 }
 
-function cardHTML(p){
-  const badge = p.tag==='mais' ? '<span class="card-badge b-mais">Mais vendido</span>'
-              : p.tag==='promo' ? '<span class="card-badge b-promo">Promoção</span>' : '';
-  return '<article class="card">'
-    + '<div class="card-tile">'+badge+ico(p.c)+'</div>'
-    + '<div class="card-body">'
-    +   '<span class="card-cat caption-up">'+ico(p.c)+NOME[p.c]+'</span>'
-    +   '<h3 class="card-name title-sm">'+p.n+'</h3>'
-    +   '<p class="card-desc body-sm">'+p.d+'</p>'
-    +   '<div class="card-foot">'
-    +     '<span class="card-price"><span class="price-label">Preço</span><span class="price-val">Consultar</span></span>'
-    +     '<a class="card-wpp" href="'+wppLink(p)+'" target="_blank" rel="noopener" aria-label="Pedir orçamento de '+p.n+' pelo WhatsApp">'
-    +       '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.553 4.1 1.521 5.827L.057 23.857c-.067.247.153.466.399.398l6.098-1.598A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>'
-    +       'Pedir orçamento</a>'
-    +   '</div>'
-    + '</div>'
-    + '</article>';
+function setCat(c){cat=c;pagina=1;montaDepts();
+  document.querySelectorAll('.fcat').forEach(b=>b.classList.toggle('active',b.dataset.cat===c));
+  $('#crumbCat').textContent=c==='todos'?'Todos os produtos':NOME[c];
+  render();window.scrollTo({top:0,behavior:'smooth'});}
+
+function filtrados(){
+  const t=norm(termo.trim());
+  let lista=PRODUTOS.filter(p=>{
+    const okC=cat==='todos'||p.c===cat;
+    const okT=!t||norm(p.n).includes(t)||norm(p.d).includes(t)||norm(NOME[p.c]).includes(t);
+    return okC&&okT;
+  });
+  if(sort==='az')lista.sort((a,b)=>a.n.localeCompare(b.n,'pt'));
+  else if(sort==='za')lista.sort((a,b)=>b.n.localeCompare(a.n,'pt'));
+  else if(sort==='cat')lista.sort((a,b)=>NOME[a.c].localeCompare(NOME[b.c],'pt')||a.n.localeCompare(b.n,'pt'));
+  else lista.sort((a,b)=>a.i-b.i);
+  return lista;
+}
+
+function card(p){
+  const badge=p.tag==='mais'?'<span class="prod-badge mais">Mais vendido</span>':p.tag==='promo'?'<span class="prod-badge promo">Oferta</span>':'';
+  return '<article class="prod">'
+    +'<div class="prod-media">'+badge+ico(p.c)+'</div>'
+    +'<div class="prod-body">'
+    +'<span class="prod-cat">'+NOME[p.c]+'</span>'
+    +'<h3 class="prod-name">'+p.n+'</h3>'
+    +'<div class="prod-price"><div class="pp-main">Sob consulta</div><div class="pp-note">Atacado e varejo</div></div>'
+    +'<a class="prod-btn" href="'+wppLink(p)+'" target="_blank" rel="noopener" aria-label="Pedir orçamento de '+p.n+'">'
+    +'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.1 1.5 5.8L0 24l6.3-1.6A11.9 11.9 0 0 0 12 24c6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg>Pedir orçamento</a>'
+    +'</div></article>';
 }
 
 function render(){
-  const t = norm(termo.trim());
-  const lista = PRODUTOS.filter(p=>{
-    const okCat = filtroCat==='todos' || p.c===filtroCat;
-    const okTermo = !t || norm(p.n).includes(t) || norm(p.d).includes(t) || norm(NOME[p.c]).includes(t);
-    return okCat && okTermo;
-  });
-  grid.innerHTML = lista.map(cardHTML).join('');
-  const tem = lista.length>0;
-  vazio.classList.toggle('show',!tem);
-  grid.style.display = tem ? 'grid' : 'none';
-  const cat = filtroCat==='todos' ? '' : ' em '+NOME[filtroCat];
-  contador.innerHTML = '<b>'+lista.length+'</b> '+(lista.length===1?'item':'itens')+cat+(t?' para “'+termo.trim()+'”':'');
+  const lista=filtrados();
+  const totPag=Math.max(1,Math.ceil(lista.length/PORPAG));
+  if(pagina>totPag)pagina=totPag;
+  const slice=lista.slice((pagina-1)*PORPAG,pagina*PORPAG);
+  grid.innerHTML=slice.map(card).join('');
+  const tem=lista.length>0;
+  vazio.classList.toggle('show',!tem);grid.style.display=tem?'grid':'none';
+  const t=termo.trim();
+  const cTxt=cat==='todos'?'':' em '+NOME[cat];
+  contador.innerHTML='<b>'+lista.length+'</b> '+(lista.length===1?'produto':'produtos')+cTxt+(t?' para “'+t+'”':'');
+  montaPager(totPag,lista.length);
+}
+function montaPager(tot,total){
+  if(total<=PORPAG){pager.innerHTML='';return;}
+  let h='<button class="'+(pagina===1?'pg-dis':'')+'" data-p="'+(pagina-1)+'" '+(pagina===1?'disabled':'')+'>‹</button>';
+  for(let i=1;i<=tot;i++)h+='<button class="'+(i===pagina?'pg-on':'')+'" data-p="'+i+'">'+i+'</button>';
+  h+='<button class="'+(pagina===tot?'pg-dis':'')+'" data-p="'+(pagina+1)+'" '+(pagina===tot?'disabled':'')+'>›</button>';
+  pager.innerHTML=h;
+  pager.querySelectorAll('[data-p]').forEach(b=>{if(!b.disabled)b.onclick=()=>{pagina=+b.dataset.p;render();window.scrollTo({top:0,behavior:'smooth'});};});
 }
 
-busca.addEventListener('input',e=>{
-  termo = e.target.value;
-  limpar.classList.toggle('show', termo.length>0);
-  render();
-});
-limpar.addEventListener('click',()=>{
-  termo=''; busca.value=''; limpar.classList.remove('show'); busca.focus(); render();
-});
+/* busca */
+function aplicarBusca(){termo=busca.value;limpar.classList.toggle('show',termo.length>0);pagina=1;render();}
+busca.addEventListener('input',aplicarBusca);
+busca.addEventListener('keydown',e=>{if(e.key==='Enter')window.scrollTo({top:0,behavior:'smooth'});});
+$('#goBusca').onclick=()=>{aplicarBusca();window.scrollTo({top:0,behavior:'smooth'});};
+limpar.onclick=()=>{busca.value='';termo='';limpar.classList.remove('show');pagina=1;render();busca.focus();};
+ordenar.onchange=()=>{sort=ordenar.value;pagina=1;render();};
 
-montaPills();
-render();
+/* drawer mobile */
+function abrirDrawer(){side.classList.add('open');overlay.classList.add('show');document.body.style.overflow='hidden';}
+function fecharDrawer(){side.classList.remove('open');overlay.classList.remove('show');document.body.style.overflow='';}
+$('#openFiltros').onclick=abrirDrawer;$('#burger').onclick=abrirDrawer;
+$('#closeSide').onclick=fecharDrawer;overlay.onclick=fecharDrawer;
+
+/* footer departamentos */
+document.querySelectorAll('[data-dep]').forEach(a=>a.onclick=e=>{e.preventDefault();setCat(a.dataset.dep);});
+
+montaDepts();montaSide();render();
 </script>
 </body>
 </html>
