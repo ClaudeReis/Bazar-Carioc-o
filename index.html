@@ -315,6 +315,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(255,255,255,
   display:flex;align-items:center;justify-content:center;
   font-size:.7rem;font-weight:900;flex-shrink:0;
 }
+/* botões da oferta (sobre fundo escuro) */
+.oferta-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.oferta .btn-outline{background:rgba(255,255,255,.12);color:var(--branco);border-color:rgba(255,255,255,.45)}
+.oferta .btn-outline:hover{background:rgba(255,255,255,.22);border-color:#fff;color:var(--branco)}
+@media(max-width:560px){
+  .oferta-btns{flex-direction:column}
+  .oferta-btns .btn{width:100%;justify-content:center}
+}
 
 /* ─────────────────────────────────────────
    FAQ
@@ -861,7 +869,7 @@ footer{
         <span class="oferta-label">O que você encontra aqui</span>
         <h2>Uma loja completa<br>para o profissional<br>do Rio de Janeiro.</h2>
         <p>Não importa o tamanho do seu serviço — temos o que você precisa, na quantidade certa, pelo preço que faz sentido. E o que não estiver na loja, você encomenda pelo catálogo.</p>
-        <div style="display:flex;gap:.7rem;flex-wrap:wrap">
+        <div class="oferta-btns">
           <a href="https://wa.me/5521990063878" class="btn btn-wpp" target="_blank" rel="noopener">
             💬 Verificar disponibilidade
           </a>
@@ -1006,22 +1014,20 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// Scroll-reveal
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(en => {
-    if (en.isIntersecting) {
-      en.target.style.opacity = '1';
-      en.target.style.transform = 'translateY(0)';
-    }
-  });
+// Scroll-reveal (com fallback: nunca deixar conteúdo invisível no mobile)
+const revealEls = document.querySelectorAll('.ben-card,.dor-card,.dep-card,.step');
+const reveal = el => { el.style.opacity = '1'; el.style.transform = 'none'; };
+const obs = new IntersectionObserver((entries, o) => {
+  entries.forEach(en => { if (en.isIntersecting) { reveal(en.target); o.unobserve(en.target); } });
 }, { threshold: 0.12 });
-
-document.querySelectorAll('.ben-card,.dor-card,.dep-card,.step,.oferta-box').forEach(el => {
+revealEls.forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(24px)';
   el.style.transition = 'opacity .5s ease, transform .5s ease';
   obs.observe(el);
 });
+// Garantia contra falha do observer (ex.: mobile): revela tudo após 1,2s
+setTimeout(() => revealEls.forEach(reveal), 1200);
 </script>
 </body>
 </html>
